@@ -47,8 +47,10 @@ Recurring devices from the flyers: the gold rule-label (`— SUBJECTS COVERED`),
 gold-dot field and cream wedge in the hero, gold left borders on white cards, one navy
 "featured" card among white ones, and the navy booking bar in the footer.
 
-Dark mode keeps the same brand — navy becomes the ground and cream the ink, gold stays
-the accent. It is driven by `prefers-color-scheme`.
+The site is light only, like the printed flyers. `color-scheme: light` on `:root` (and the
+matching `<meta>` in `index.html`) keeps the browser's own widgets light as well, so a
+visitor whose OS is set to dark still sees the cream page. There are no
+`prefers-color-scheme` rules — do not add one without a full second palette.
 
 ### The portrait
 
@@ -81,7 +83,7 @@ replace the photo, re-cut a new source and rebuild those three files at the same
 
 ```
 index.html                  page shell; loads every data file, then the app
-css/styles.css              all styling, light and dark
+css/styles.css              all styling (light only)
 img/ibrahim-hussein.png     hero portrait, background removed (900×1125)
 img/ibrahim-hussein-sm.png  footer avatar, background removed (240×240)
 img/ibrahim-hussein*.jpg    original photos, background intact

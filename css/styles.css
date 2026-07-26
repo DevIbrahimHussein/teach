@@ -5,6 +5,10 @@
    ========================================================================== */
 
 :root {
+  /* Light only. Declared so the browser paints its own widgets — scrollbars, form
+     controls, the mobile address bar — light too, whatever the OS is set to. */
+  color-scheme: light;
+
   /* ---- brand ---- */
   --navy:        #16213f;
   --navy-soft:   #1d2a4d;
@@ -51,32 +55,6 @@
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
   --gutter: clamp(18px, 3.6vw, 56px);
-}
-
-/* Dark theme stays inside the brand: navy becomes the ground, cream the ink. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:          #0d1528;
-    --surface:     #16213f;
-    --surface-2:   #1b2745;
-    --border:      #2b3859;
-    --border-firm: #3d4c72;
-    --text:        #f4efe5;
-    --text-dim:    #b9c2d6;
-    --text-faint:  #8b96b0;
-    --accent:      var(--gold-soft);
-    --link:        var(--gold-soft);
-    --gold-wash:   #2a2a1c;
-    --cream-deep:  #1b2745;
-    --white:       #16213f;
-    --ok:          #7fc49a;
-    --ok-wash:     #1a2f28;
-    --bad:         #e59a96;
-    --bad-wash:    #33211f;
-    --code-bg:     #0a1122;
-    --shadow:    0 1px 2px rgba(0, 0, 0, .4), 0 10px 26px -16px rgba(0, 0, 0, .8);
-    --shadow-lg: 0 2px 4px rgba(0, 0, 0, .5), 0 26px 50px -28px rgba(0, 0, 0, .9);
-  }
 }
 
 * { box-sizing: border-box; }
@@ -302,7 +280,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   font-weight: 700;
   color: var(--navy);
 }
-@media (prefers-color-scheme: dark) { .hero-title { color: var(--text); } }
 .hero-title em { font-style: normal; color: var(--gold); display: block; }
 
 .hero-lede {
@@ -324,7 +301,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   color: var(--text); background: transparent;
   font-size: 14px; font-weight: 700;
 }
-@media (prefers-color-scheme: dark) { .pill { border-color: var(--border-firm); } }
 
 /* filled variant with a gold dot, as on the BT3 flyer */
 .pill-solid {
@@ -334,9 +310,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
 .pill-solid::before {
   content: ""; flex: none; width: 8px; height: 8px;
   border-radius: 50%; background: var(--gold);
-}
-@media (prefers-color-scheme: dark) {
-  .pill-solid { background: var(--surface-2); border-color: var(--border); color: var(--text); }
 }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
@@ -355,10 +328,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   box-shadow: 0 8px 20px -10px rgba(22, 33, 63, .8);
 }
 .btn-primary:hover { background: var(--gold); color: var(--navy); }
-@media (prefers-color-scheme: dark) {
-  .btn-primary { background: var(--gold); color: var(--navy); }
-  .btn-primary:hover { background: var(--gold-soft); color: var(--navy); }
-}
 .btn-ghost {
   background: transparent; color: var(--text); border-color: var(--gold);
 }
@@ -374,7 +343,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   font-family: var(--serif); font-size: 20px;
   color: var(--gold-deep); margin-right: 5px;
 }
-@media (prefers-color-scheme: dark) { .hero-stats strong { color: var(--gold-soft); } }
 
 .section-title {
   margin: 52px 0 0; font-size: 26px; letter-spacing: -.01em; color: var(--text);
@@ -415,10 +383,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
 .hero-arrow:hover { background: var(--navy); color: var(--gold); border-color: var(--navy); }
 .hero-arrow.is-prev { left: 14px; }
 .hero-arrow.is-next { right: 14px; }
-@media (prefers-color-scheme: dark) {
-  .hero-arrow { color: var(--text); }
-  .hero-arrow:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
-}
 @media (max-width: 860px) {
   .hero-arrow { display: none; }   /* dots and swipe cover it */
 }
@@ -451,10 +415,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
 .hero-slider.is-paused .hero-dot-fill { animation-play-state: paused; }
 
 @keyframes dot-fill { from { width: 0; } to { width: 100%; } }
-
-@media (prefers-color-scheme: dark) {
-  .hero-dot.is-active { background: var(--border-firm); }
-}
 
 /* No autoplay without motion: show the active dot simply filled. */
 @media (prefers-reduced-motion: reduce) {
@@ -518,7 +478,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   font-size: clamp(38px, 4vw, 52px); line-height: 1;
   color: var(--navy);
 }
-@media (prefers-color-scheme: dark) { .package-price { color: var(--text); } }
 .package-note { display: block; font-size: 14px; color: var(--text-dim); }
 
 .package.is-featured {
@@ -736,10 +695,6 @@ a.module-row:hover {
 .badge.easy   { color: var(--text);      border-color: var(--border-firm); background: transparent; }
 .badge.medium { color: var(--gold-deep); background: var(--gold-wash); border-color: var(--gold-wash); }
 .badge.hard   { color: var(--gold);      background: var(--navy);      border-color: var(--navy); }
-@media (prefers-color-scheme: dark) {
-  .badge.medium { color: var(--gold-soft); }
-  .badge.hard   { background: var(--gold); color: var(--navy); border-color: var(--gold); }
-}
 
 .langsel {
   display: inline-flex; background: var(--surface-2);
@@ -753,9 +708,6 @@ a.module-row:hover {
 }
 .langsel button:hover { color: var(--text); }
 .langsel button.active { background: var(--navy); color: var(--gold); }
-@media (prefers-color-scheme: dark) {
-  .langsel button.active { background: var(--gold); color: var(--navy); }
-}
 
 .card p.desc { margin: 0 0 16px; }
 
@@ -826,7 +778,6 @@ code {
   background: var(--gold-wash); border: 1px solid var(--border);
   padding: 1px 5px; border-radius: 4px; color: var(--gold-deep);
 }
-@media (prefers-color-scheme: dark) { code { color: var(--gold-soft); } }
 pre.code code { background: none; border: 0; padding: 0; font-size: 1em; color: inherit; }
 
 details.hint {
@@ -838,7 +789,6 @@ details.hint summary {
   letter-spacing: .12em; text-transform: uppercase;
   color: var(--gold-deep); list-style: none;
 }
-@media (prefers-color-scheme: dark) { details.hint summary { color: var(--gold-soft); } }
 details.hint summary::-webkit-details-marker { display: none; }
 details.hint summary::before { content: "▸ "; }
 details.hint[open] summary::before { content: "▾ "; }
@@ -938,7 +888,6 @@ details.hint p { margin: 9px 0 0; font-size: 14px; color: var(--text-dim); }
 .nav-ex-dot.easy   { background: var(--border-firm); }
 .nav-ex-dot.medium { background: var(--gold); }
 .nav-ex-dot.hard   { background: var(--navy); }
-@media (prefers-color-scheme: dark) { .nav-ex-dot.hard { background: var(--gold-soft); } }
 
 /* scroll-spy state */
 .nav-obj.is-current, .nav-ex.is-current {
@@ -948,10 +897,6 @@ details.hint p { margin: 9px 0 0; font-size: 14px; color: var(--text-dim); }
 .nav-ex.is-current .nav-ex-num { color: var(--gold); }
 .nav-ex.is-current .nav-ex-dot.easy { background: var(--on-navy-dim); }
 .nav-obj.is-owner { background: var(--gold-wash); }
-@media (prefers-color-scheme: dark) {
-  .nav-obj.is-current, .nav-ex.is-current { background: var(--gold); color: var(--navy); }
-  .nav-obj.is-current .nav-obj-num, .nav-ex.is-current .nav-ex-num { color: var(--navy); }
-}
 
 /* first objective in the main column shouldn't add a second top gap */
 .module-main > .objective:first-child { margin-top: 0; }
@@ -967,7 +912,6 @@ details.hint p { margin: 9px 0 0; font-size: 14px; color: var(--text-dim); }
   border-color: var(--gold); background: var(--gold-wash); color: var(--navy);
   text-decoration: none; transform: translateY(-2px);
 }
-@media (prefers-color-scheme: dark) { .pager a:hover { color: var(--text); } }
 
 /* ---------- WhatsApp button ---------- */
 
