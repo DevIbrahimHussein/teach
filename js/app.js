@@ -68,6 +68,18 @@
       '<pre class="code"><code>' + esc(code) + '</code></pre>';
   }
 
+  /* Published for js/quiz.js, which renders inside the same page and must look
+     identical. Same idea as window.Curriculum and window.starterCpp. */
+  window.UI = {
+    esc: esc,
+    fmt: fmt,
+    plain: plain,
+    codeBlock: codeBlock,
+    langSelector: langSelector,
+    langLabel: langLabel,
+    currentLang: currentLang
+  };
+
   function field(label, body) {
     if (!body) return '';
     return '<div class="field"><span class="eyebrow">' + esc(label) + '</span>' +
@@ -194,8 +206,8 @@
   /* Shared by the hero and every service block, so they stay visually identical. */
   function portraitFigure() {
     return '<figure class="hero-portrait">' +
-      '<img src="img/ibrahim-hussein.jpg" alt="Mr. Ibrahim Hussein" ' +
-           'width="900" height="1200" decoding="async">' +
+      '<img src="img/ibrahim-hussein.png" alt="Mr. Ibrahim Hussein" ' +
+           'width="900" height="1125" decoding="async">' +
       '<figcaption>' +
         '<strong>' + esc(window.CONTACT.name) + '</strong>' +
         '<span>' + esc(window.CONTACT.place) + '</span>' +
@@ -507,6 +519,20 @@
         : '<a class="module-row" href="#/c/' + esc(course.id) + '/m/' + m.number + '">' + inner + '</a>';
     }).join('');
 
+    /* Only courses that have a question bank offer the test. */
+    var quizCta = (window.Quiz && Quiz.has(course.id))
+      ? '<a class="quiz-cta" href="#/quiz/' + esc(course.id) + '">' +
+          '<span class="quiz-cta-body">' +
+            '<span class="eyebrow">Evaluation test</span>' +
+            '<strong>Find out what you already know</strong>' +
+            '<span>' + Quiz.countQuestions(course.id) + ' multiple-choice questions across ' +
+              Quiz.countTopics(course.id) + ' objectives. The score at the end lists the ' +
+              'objectives you know and the ones still to study.</span>' +
+          '</span>' +
+          '<span class="quiz-cta-go">Start &rarr;</span>' +
+        '</a>'
+      : '';
+
     return '<div class="breadcrumb"><a href="#/">Courses</a><span>/</span>' + esc(course.title) + '</div>' +
       '<span class="eyebrow">' + esc(course.subtitle) + '</span>' +
       '<h1 class="page-title">' + esc(course.title) + '</h1>' +
@@ -515,7 +541,8 @@
         '<ul>' + course.rules.map(function (r) {
           return '<li>' + fmt(r) + '</li>';
         }).join('') + '</ul></div>' +
-      '<div class="module-list">' + rows + '</div>';
+      '<div class="module-list">' + rows + '</div>' +
+      quizCta;
   }
 
   function viewModule(courseId, number, lang) {
@@ -626,6 +653,8 @@
 
     if ((m = hash.match(/^\/c\/([\w-]+)\/m\/(\d+)/))) {
       app.innerHTML = viewModule(m[1], m[2], lang);
+    } else if ((m = hash.match(/^\/quiz\/([\w-]+)/))) {
+      app.innerHTML = (window.QuizUI && QuizUI.page(m[1], lang)) || notFound();
     } else if (/^\/services\/?$/.test(hash)) {
       app.innerHTML = viewServices();
     } else if ((m = hash.match(/^\/c\/([\w-]+)/))) {
@@ -724,6 +753,9 @@
       buttons[i].setAttribute('aria-pressed', on ? 'true' : 'false');
     }
 
+    /* the test asks language-specific questions, so it is redrawn whole */
+    if (window.QuizUI && QuizUI.isActive()) { QuizUI.refresh(false); return; }
+
     var mod = currentModule();
     if (!mod || !mod.objectives) return;   // course list and pending pages have no code
 
@@ -754,6 +786,8 @@
       if (next !== currentLang()) swapLanguage(next);
       return;
     }
+
+    if (window.QuizUI && QuizUI.click(btn)) return;
 
     if (btn.hasAttribute('data-slide-to') && slider.go) {
       slider.go(Number(btn.getAttribute('data-slide-to')));

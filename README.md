@@ -19,6 +19,7 @@ open index.html
 | Programming Fundamentals | 1 Basics, 2 Conditions, 3 Loops, 4 Arrays | **66 exercises authored**, C++ and Java |
 | Programming Fundamentals | 5–10 | Syllabus pending |
 | Object-Oriented Programming | 1–10 | Syllabus pending |
+| Evaluation test | Fundamentals 1–4 | **66 questions**, three per objective |
 
 Modules 5–10 of Course 1 and all of Course 2 render as *Syllabus pending* with their
 planned topics listed. `teach.md` asks for the detailed syllabus to be agreed with the
@@ -60,18 +61,32 @@ sips -s format jpeg -s formatOptions 82 --resampleWidth 900 bob.jpg --out img/ib
 sips -s format jpeg -s formatOptions 78 --resampleWidth 420 bob.jpg --out img/ibrahim-hussein-sm.jpg
 ```
 
-To replace the photo, drop in a new source and re-run those two commands. Framing is done
-in CSS (`object-fit: cover` with `object-position: 55% 22%`), not by cropping the file, so
-a differently-composed photo may want that value adjusted.
+The site now serves **background-removed PNGs** instead: the street behind the subject was
+cut out with the macOS Vision framework (`VNGenerateForegroundInstanceMaskRequest`), then
+the cutout was placed on transparent canvases and quantised to 256 colours. The two JPEGs
+stay in the repo as the un-cut originals.
+
+| file | role | notes |
+| --- | --- | --- |
+| `ibrahim-hussein.png` | hero portrait, 900×1125 | full-body cutout on a 4:5 transparent canvas |
+| `ibrahim-hussein-sm.png` | footer avatar, 240×240 | head-and-shoulders crop, transparent |
+| `ibrahim-hussein-cutout.png` | 428×790 | the raw trimmed cutout both are built from |
+
+Because each PNG is already framed at the aspect ratio its slot uses, the CSS no longer
+re-crops (`object-position` is a plain `50% 50%`). The transparency means the card colour
+shows through: `--cream-deep` behind the hero, `--navy-soft` behind the footer circle. To
+replace the photo, re-cut a new source and rebuild those three files at the same sizes.
 
 ## Layout
 
 ```
 index.html                  page shell; loads every data file, then the app
 css/styles.css              all styling, light and dark
-img/ibrahim-hussein.jpg     hero portrait (900×1200)
-img/ibrahim-hussein-sm.jpg  footer avatar (420×560)
+img/ibrahim-hussein.png     hero portrait, background removed (900×1125)
+img/ibrahim-hussein-sm.png  footer avatar, background removed (240×240)
+img/ibrahim-hussein*.jpg    original photos, background intact
 js/app.js                   hash router and renderer
+js/quiz.js                  evaluation test: engine, views and scoring
 data/courses.js             registry, starter-code templates, course definitions
 data/fundamentals/m1.js     Module 1 — Basics
 data/fundamentals/m2.js     Module 2 — Conditions
@@ -80,6 +95,8 @@ data/fundamentals/m4.js     Module 4 — Arrays
 data/fundamentals/pending.js  Modules 5–10 placeholders
 data/oop.js                 Course 2 placeholders
 data/services.js            tutoring offerings (BT3 IT) + contact details
+data/quiz/quiz.js           question-bank registry
+data/quiz/fundamentals.js   66 questions, three per objective
 ```
 
 Everything is plain `<script>` — no ES modules, because `file://` blocks those.
@@ -161,6 +178,58 @@ by hand. Pass `starter: '…'` on either language block to override it.
 Backticks inside `description`, `points`, `notes`, `constraints` and `hint` render as
 inline `code`.
 
+## The evaluation test
+
+`#/quiz/fundamentals` — also linked from the header and from the bottom of the course
+page. It exists so a student can find out where they stand before booking sessions, and
+so the first session starts from evidence rather than a guess.
+
+- **Coverage.** Three multiple-choice questions for every one of the 22 authored
+  objectives of Modules 1–4. Modules 5–10 and the OOP course have no questions, because
+  their syllabus is not agreed yet — the same rule the exercises follow.
+- **During the test.** One question at a time, four choices, no timer. Answers can be
+  changed until the test is finished, `A`–`D` and `1`–`4` pick, the arrow keys move, and
+  progress is kept in `localStorage` so the browser can be closed and reopened. The
+  objective being tested is deliberately not named until the result page — naming it
+  would give the answer away.
+- **The score.** Total correct, a per-module breakdown, then the two lists the student
+  came for: **objectives you know** and **objectives to study**, each linking to its
+  module. An objective counts as known at two of three correct; an unanswered question
+  counts as wrong. Below that, every question is listed with the chosen answer, the
+  correct one and why.
+- **Language.** The C++/Java selector works inside the test. An answer is stored as the
+  number of the option chosen, which only means something in the language it was chosen
+  in, so a pick on a syntax question does not carry over to the other language — the
+  header says how many need answering again, and switching back restores them.
+
+### Adding questions
+
+Write a topic per objective, in curriculum order, in `data/quiz/fundamentals.js`:
+
+```js
+Quiz.addTopic('fundamentals', {
+  module: 1,
+  objective: 'Data Types',          // must match the objective title exactly
+  questions: [ /* exactly three */ ]
+});
+```
+
+A question:
+
+```js
+{
+  ask: 'Which data type fits the number of students in a class?',
+  code: { cpp: 'int a = 7;', java: 'int a = 7;' },   // optional
+  options: ['`double`', '`int`', '`char`', '`string`'],
+  answer: 1,                                        // index into options
+  why: 'Shown on the result page, next to the answer.'
+}
+```
+
+`ask`, `code`, `options`, `answer` and `why` each accept `{ cpp: …, java: … }` in place
+of a plain value, for the questions where the two languages genuinely differ. Backticks
+render as inline `code`, as everywhere else in the content.
+
 ## Conventions the content follows
 
 - The problem, the samples and the expected behaviour are identical across C++ and Java.
@@ -178,3 +247,11 @@ three exercises, every exercise has both language blocks, at least two samples, 
 difficulty, constraints and a hint) and an arithmetic pass that recomputes each sample's
 expected output from its input and compares. All 66 exercises and 204 sample cases pass
 both.
+
+The evaluation test was checked the same way: a structural pass (every objective covered
+exactly once and in curriculum order, three questions each, four distinct options per
+language, every answer index in range, balanced backticks) and a runtime pass that drives
+`js/quiz.js` against a stub DOM — a perfect attempt scores 66/66 with 22 objectives known,
+a wrong attempt scores 0 with none, two of three marks an objective known, and a
+mid-test language switch drops exactly the answers whose choices differ and restores them
+on switching back. Every rendered view was also checked for balanced tags.
