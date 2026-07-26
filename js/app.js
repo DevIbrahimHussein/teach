@@ -396,12 +396,11 @@
     slider.restart = restartFill;
 
     if (root.addEventListener) {
-      var pause = function () { root.classList.add('is-paused'); };
-      var resume = function () { root.classList.remove('is-paused'); };
-      root.addEventListener('mouseenter', pause);
-      root.addEventListener('mouseleave', resume);
-      root.addEventListener('focusin', pause);
-      root.addEventListener('focusout', resume);
+      /* Hovering does not stop the carousel — the pointer sits over the hero for most
+         of a visit, which would leave it frozen on the first slide. Keyboard focus
+         still pauses it, so tabbing through a slide's links never moves them away. */
+      root.addEventListener('focusin', function () { root.classList.add('is-paused'); });
+      root.addEventListener('focusout', function () { root.classList.remove('is-paused'); });
 
       /* A full bar is the cue to advance. Skipped entirely under reduced motion,
          where the shortened animation would otherwise fire back to back. */
