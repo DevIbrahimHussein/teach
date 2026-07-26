@@ -290,17 +290,67 @@
       '</div>';
   }
 
-  /* The Programming & OOP prices, under the course grid they belong to. */
-  function coursePricing() {
+  /* The Programming & OOP offering, built to the same shape as serviceDetail above:
+     what it covers, then its packages, then its CTA. The courses are what it covers,
+     so the grid sits where a service puts its subject list. */
+  function courseOffering(grid) {
     var p = window.CoursePricing;
-    if (!p) return '';
-    return '<div class="service-detail" id="pricing-courses">' +
-      packagesBlock(p.packagesLabel, p.packages) +
-      ctaRow(p.cta) +
+    if (!p) return '<div class="course-grid">' + grid + '</div>';
+
+    return '<h2 class="section-title">' + esc(p.title) + '</h2>' +
+      '<div class="service-detail" id="offer-courses">' +
+        '<span class="rule-label">' + esc(p.coursesLabel) + '</span>' +
+        '<div class="course-grid">' + grid + '</div>' +
+        packagesBlock(p.packagesLabel, p.packages) +
+        ctaRow(p.cta) +
       '</div>';
   }
 
   function allServices() { return window.Services || []; }
+
+  /* ---------- home-only blocks ---------- */
+
+  /* Numbered path from a first WhatsApp message to a first session. */
+  function stepsBlock() {
+    var s = window.HomeContent && window.HomeContent.steps;
+    if (!s || !s.items || !s.items.length) return '';
+
+    return '<h2 class="section-title">' + esc(s.title) + '</h2>' +
+      '<div class="steps" id="how-sessions-work">' +
+        '<span class="rule-label">' + esc(s.label) + '</span>' +
+        '<ol class="step-flow">' +
+          s.items.map(function (it, i) {
+            return '<li class="step">' +
+              '<span class="step-head">' +
+                '<span class="step-num">' + pad2(i + 1) + '</span>' +
+                '<strong class="step-title">' + esc(it.title) + '</strong>' +
+              '</span>' +
+              '<span class="step-body">' + fmt(it.body) + '</span>' +
+            '</li>';
+          }).join('') +
+        '</ol>' +
+      '</div>';
+  }
+
+  /* Disclosures rather than a wall of text: the questions read as a list, and only
+     the answer someone came for is opened. */
+  function faqBlock() {
+    var f = window.HomeContent && window.HomeContent.faq;
+    if (!f || !f.items || !f.items.length) return '';
+
+    return '<h2 class="section-title">' + esc(f.title) + '</h2>' +
+      '<div class="faq" id="faq">' +
+        '<span class="rule-label">' + esc(f.label) + '</span>' +
+        '<div class="faq-list">' +
+          f.items.map(function (it) {
+            return '<details class="faq-item">' +
+              '<summary>' + esc(it.q) + '</summary>' +
+              '<p>' + fmt(it.a) + '</p>' +
+            '</details>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+  }
 
   /* ---------- hero slider ---------- */
 
@@ -485,13 +535,13 @@
     );
 
     return heroSlider(slides) +
-      '<h2 class="section-title">Choose a course</h2>' +
-      '<div class="course-grid">' + cards + '</div>' +
-      coursePricing() +
+      courseOffering(cards) +
       allServices().map(function (s) {
         return '<h2 class="section-title">' + esc(s.title + ' ' + s.titleAccent) + '</h2>' +
           serviceDetail(s);
       }).join('') +
+      stepsBlock() +
+      faqBlock() +
       '<div class="panel">' +
         '<span class="rule-label">How this platform works</span>' +
         '<ul>' +
@@ -501,17 +551,6 @@
           '<li>Switch between C++ and Java at the top-right of any exercise. The problem never changes &mdash; only the syntax notes and the starter template do.</li>' +
         '</ul>' +
       '</div>';
-  }
-
-  function viewServices() {
-    var list = allServices();
-    if (!list.length) return notFound();
-
-    return '<div class="breadcrumb"><a href="#/">Courses</a><span>/</span>Tutoring services</div>' +
-      list.map(function (s) {
-        return '<section class="hero service-hero">' + serviceSlideInner(s) + '</section>' +
-          serviceDetail(s);
-      }).join('');
   }
 
   function viewCourse(courseId) {
@@ -556,10 +595,6 @@
       '<span class="eyebrow">' + esc(course.subtitle) + '</span>' +
       '<h1 class="page-title">' + esc(course.title) + '</h1>' +
       '<p class="page-lede">' + esc(course.description) + '</p>' +
-      '<div class="panel"><span class="rule-label">How to read these exercises</span>' +
-        '<ul>' + course.rules.map(function (r) {
-          return '<li>' + fmt(r) + '</li>';
-        }).join('') + '</ul></div>' +
       '<div class="module-list">' + rows + '</div>' +
       quizCta;
   }
@@ -674,8 +709,6 @@
       app.innerHTML = viewModule(m[1], m[2], lang);
     } else if ((m = hash.match(/^\/quiz\/([\w-]+)/))) {
       app.innerHTML = (window.QuizUI && QuizUI.page(m[1], lang)) || notFound();
-    } else if (/^\/services\/?$/.test(hash)) {
-      app.innerHTML = viewServices();
     } else if ((m = hash.match(/^\/c\/([\w-]+)/))) {
       app.innerHTML = viewCourse(m[1]);
     } else if (/^\/?$/.test(hash)) {

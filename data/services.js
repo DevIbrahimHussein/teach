@@ -11,9 +11,14 @@ window.CONTACT = {
   place: 'Beirut · Live or Online'
 };
 
-/* Pricing for the two exercise courses, straight off the Programming & OOP flyer.
-   One block covers both: a "subject" is either Programming Fundamentals or OOP. */
+/* The Programming & OOP offering: the two exercise courses and what they cost,
+   straight off the flyer. Shaped to match a service above — title, what it covers,
+   packages, CTA — so both offerings render as the same kind of block on the home
+   page. What it covers is the course grid itself, built from data/courses.js.
+   One package block covers both courses: a "subject" is either Fundamentals or OOP. */
 window.CoursePricing = {
+  title: 'Programming & OOP',
+  coursesLabel: 'Choose a course',
   packagesLabel: 'Packages included',
   packages: [
     { label: 'Per session', price: '$20', note: 'Single hour · one topic' },

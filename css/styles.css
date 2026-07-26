@@ -421,9 +421,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   .hero-dot.is-active .hero-dot-fill { animation: none; width: 100%; }
 }
 
-/* The service head reuses .hero wholesale — same shell, wedge, dots and portrait. */
-.service-hero { margin-top: 56px; }
-
 /* "BT3 IT" reads on one line, unlike the landing hero's stacked accent word */
 .hero-title.is-inline { max-width: none; }
 .hero-title.is-inline em { display: inline; }
@@ -509,6 +506,89 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   .btn-whatsapp { width: 100%; }
 }
 
+/* ---------- how sessions work ---------- */
+
+.steps { margin-top: 24px; }
+.steps .rule-label { margin-bottom: 14px; }
+
+/* One low banner rather than four cards: the steps read across as a single flow,
+   separated by gold chevrons instead of card edges. */
+.step-flow {
+  list-style: none; margin: 0; padding: 16px 8px;
+  display: flex; align-items: stretch;
+  background: var(--gold-wash);
+  border: 1px solid var(--gold-soft);
+  border-left: 5px solid var(--gold);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.step { position: relative; flex: 1 1 0; min-width: 0; padding: 0 20px; }
+
+/* the chevron sits in the gutter between two steps, pointing the way through */
+.step + .step::before {
+  content: ""; position: absolute; left: -5px; top: 50%;
+  width: 9px; height: 9px; margin-top: -6px;
+  border-right: 2px solid var(--gold-deep);
+  border-bottom: 2px solid var(--gold-deep);
+  transform: rotate(-45deg);
+}
+
+.step-head { display: block; margin-bottom: 3px; }
+.step-num {
+  font-family: var(--serif); font-weight: 700; font-size: 15px;
+  color: var(--gold-deep); margin-right: 8px;
+}
+.step-title { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -.005em; }
+.step-body { display: block; font-size: 13px; line-height: 1.5; color: var(--text-dim); }
+
+/* four columns stop being readable well before the page does */
+@media (max-width: 1000px) {
+  .step-flow { flex-direction: column; padding: 10px 8px; }
+  .step { padding: 13px 16px 13px 22px; }
+  .step + .step::before { left: 6px; top: 20px; margin-top: 0; transform: rotate(45deg); }
+  .step-body { font-size: 13.5px; }
+}
+
+/* ---------- faq ---------- */
+
+.faq { margin-top: 24px; }
+.faq .rule-label { margin-bottom: 18px; }
+
+/* Two columns of disclosures on wide screens; each item sizes to its own answer,
+   so an open question never pushes its neighbour down. */
+.faq-list {
+  display: grid; gap: 12px; align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+@media (max-width: 520px) { .faq-list { grid-template-columns: 1fr; } }
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 16px 22px;
+  box-shadow: var(--shadow);
+  transition: border-color .14s;
+}
+.faq-item summary {
+  cursor: pointer; list-style: none;
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  font-family: var(--serif); font-size: 18px; font-weight: 700;
+  line-height: 1.35; color: var(--text);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; flex: none;
+  font-family: var(--sans); font-size: 20px; font-weight: 700; line-height: 1;
+  color: var(--gold); transition: transform .2s ease;
+}
+.faq-item[open] summary::after { content: "−"; }
+.faq-item summary:hover { color: var(--link); }
+.faq-item p {
+  margin: 12px 0 2px; font-size: 14.5px; color: var(--text-dim); max-width: 72ch;
+}
+
 /* ---------- generic blocks ---------- */
 
 .breadcrumb {
@@ -550,6 +630,8 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   display: grid; gap: 22px; margin: 24px 0;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
 }
+/* inside an offering the grid is "what it covers", so it spaces like .subject-grid */
+.service-detail .course-grid { margin: 0 0 32px; }
 
 .course-card {
   position: relative; display: block;
