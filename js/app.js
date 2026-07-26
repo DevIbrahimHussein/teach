@@ -247,6 +247,30 @@
       portraitFigure();
   }
 
+  /* Shared by the service blocks and the course pricing, so a price card looks the
+     same wherever it appears. */
+  function packagesBlock(label, packages) {
+    return '<span class="rule-label">' + esc(label) + '</span>' +
+      '<div class="package-grid">' +
+        packages.map(function (p) {
+          return '<div class="package' + (p.featured ? ' is-featured' : '') + '">' +
+            (p.tag ? '<span class="package-tag">' + esc(p.tag) + '</span>' : '') +
+            '<span class="package-label">' + esc(p.label) + '</span>' +
+            '<span class="package-price">' + esc(p.price) + '</span>' +
+            '<span class="package-note">' + esc(p.note) + '</span>' +
+          '</div>';
+        }).join('') +
+      '</div>';
+  }
+
+  function ctaRow(cta) {
+    return '<div class="service-cta">' +
+        '<a class="btn btn-whatsapp" href="' + esc(waLink(cta.message)) + '" ' +
+           'target="_blank" rel="noopener">' + WA_GLYPH + esc(cta.label) + '</a>' +
+        '<span class="service-cta-note">Or call ' + esc(window.CONTACT.display) + '</span>' +
+      '</div>';
+  }
+
   function serviceDetail(s) {
     return '<div class="service-detail" id="service-' + esc(s.id) + '">' +
 
@@ -260,24 +284,19 @@
         }).join('') +
       '</div>' +
 
-      '<span class="rule-label">' + esc(s.packagesLabel) + '</span>' +
-      '<div class="package-grid">' +
-        s.packages.map(function (p) {
-          return '<div class="package' + (p.featured ? ' is-featured' : '') + '">' +
-            (p.tag ? '<span class="package-tag">' + esc(p.tag) + '</span>' : '') +
-            '<span class="package-label">' + esc(p.label) + '</span>' +
-            '<span class="package-price">' + esc(p.price) + '</span>' +
-            '<span class="package-note">' + esc(p.note) + '</span>' +
-          '</div>';
-        }).join('') +
-      '</div>' +
+      packagesBlock(s.packagesLabel, s.packages) +
+      ctaRow(s.cta) +
 
-      '<div class="service-cta">' +
-        '<a class="btn btn-whatsapp" href="' + esc(waLink(s.cta.message)) + '" ' +
-           'target="_blank" rel="noopener">' + WA_GLYPH + esc(s.cta.label) + '</a>' +
-        '<span class="service-cta-note">Or call ' + esc(window.CONTACT.display) + '</span>' +
-      '</div>' +
+      '</div>';
+  }
 
+  /* The Programming & OOP prices, under the course grid they belong to. */
+  function coursePricing() {
+    var p = window.CoursePricing;
+    if (!p) return '';
+    return '<div class="service-detail" id="pricing-courses">' +
+      packagesBlock(p.packagesLabel, p.packages) +
+      ctaRow(p.cta) +
       '</div>';
   }
 
@@ -469,6 +488,7 @@
     return heroSlider(slides) +
       '<h2 class="section-title">Choose a course</h2>' +
       '<div class="course-grid">' + cards + '</div>' +
+      coursePricing() +
       allServices().map(function (s) {
         return '<h2 class="section-title">' + esc(s.title + ' ' + s.titleAccent) + '</h2>' +
           serviceDetail(s);

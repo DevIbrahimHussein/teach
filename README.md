@@ -94,7 +94,7 @@ data/fundamentals/m3.js     Module 3 — Loops
 data/fundamentals/m4.js     Module 4 — Arrays
 data/fundamentals/pending.js  Modules 5–10 placeholders
 data/oop.js                 Course 2 placeholders
-data/services.js            tutoring offerings (BT3 IT) + contact details
+data/services.js            course pricing, tutoring offerings (BT3 IT), contact details
 data/quiz/quiz.js           question-bank registry
 data/quiz/fundamentals.js   66 questions, three per objective
 ```
@@ -128,6 +128,13 @@ object onto `window.Services` in `data/services.js`:
 
 The phone number lives once in `window.CONTACT.whatsapp` (wa.me form: country code, no
 `+`, no spaces). The CTA URL and its prefilled text are built from it at render time.
+
+## Course pricing
+
+The Programming & OOP prices are not a service — they sit in `window.CoursePricing` in
+`data/services.js` and render under the course grid on the home page, using the same
+`packagesBlock()` as the service blocks. One block covers both courses, since a *subject*
+is either Programming Fundamentals or OOP.
 
 ## Adding a module
 

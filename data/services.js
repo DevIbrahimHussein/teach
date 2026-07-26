@@ -11,6 +11,20 @@ window.CONTACT = {
   place: 'Beirut · Live or Online'
 };
 
+/* Pricing for the two exercise courses, straight off the Programming & OOP flyer.
+   One block covers both: a "subject" is either Programming Fundamentals or OOP. */
+window.CoursePricing = {
+  packagesLabel: 'Packages included',
+  packages: [
+    { label: 'Per session', price: '$20', note: 'Single hour · one topic' },
+    { label: 'Per subject', price: '$180', note: 'Full subject · 10 hours', tag: 'Best value', featured: true }
+  ],
+  cta: {
+    label: 'Chat on WhatsApp',
+    message: 'Hi Mr. Ibrahim, I am interested in Programming & OOP tutoring.'
+  }
+};
+
 window.Services = [
   {
     id: 'bt3-it',
