@@ -146,7 +146,7 @@ A module looks like this:
 ```js
 Curriculum.addModule('fundamentals', {
   number: 5,
-  title: 'Array Searching and Sorting',
+  title: 'Functions',
   summary: 'One line shown under the module title.',
   objectives: [ /* ... */ ]
 });
