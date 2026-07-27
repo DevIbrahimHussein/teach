@@ -616,6 +616,27 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   font-family: var(--serif); font-style: italic; font-size: 19px; line-height: 1.5;
 }
 
+/* ---------- announced course (Arduino & ESP32) ---------- */
+/* Reads as a catalogue page, not an advert: the badge carries the "not yet"
+   so the title can stay a plain course title. */
+
+.soon-head { margin-bottom: 4px; }
+.soon-head .page-title { margin-top: 10px; }
+/* inline accent, unlike the hero's stacked one — the pair reads as one name */
+.soon-head .page-title em { font-style: normal; color: var(--gold-deep); }
+.soon-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  margin-top: 18px; padding: 7px 16px 7px 13px; border-radius: 999px;
+  background: var(--gold-wash); border: 1px solid var(--gold-soft);
+  color: var(--gold-deep); font-size: 11.5px; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.soon-badge::before {
+  content: ""; flex: none; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--gold);
+}
+.soon-boards { margin-bottom: 32px; }
+
 /* navy information panel — the flyer's "subjects covered" block */
 .panel {
   background: var(--navy);

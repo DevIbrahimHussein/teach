@@ -3,6 +3,7 @@
    Routes:  #/                        course list
             #/c/<courseId>            module list
             #/c/<courseId>/m/<n>      module page (objectives + exercises)
+            #/arduino                 Arduino & ESP32 — announced, not yet written
    ========================================================================== */
 
 (function () {
@@ -690,6 +691,50 @@
     return '<nav class="pager">' + link(prev, '←') + link(next, '→') + '</nav>';
   }
 
+  /* The announced-but-unwritten course. Shaped like a course page — breadcrumb,
+     title, lede — so it reads as part of the catalogue rather than an advert, but
+     the module list is replaced by the topics it will cover. */
+  function viewEmbedded() {
+    var c = window.EmbeddedCourse;
+    if (!c) return notFound();
+
+    var topics = (c.topics || []).map(function (name, i) {
+      return '<div class="subject">' +
+        '<span class="subject-num">' + pad2(i + 1) + '</span>' +
+        '<span class="subject-name">' + esc(name) + '</span>' +
+      '</div>';
+    }).join('');
+
+    var boards = (c.boards || []).map(function (b) {
+      return '<span class="pill pill-solid">' + esc(b) + '</span>';
+    }).join('');
+
+    return '<div class="breadcrumb"><a href="#/">Courses</a><span>/</span>' +
+        esc(c.title + ' ' + c.titleAccent) + '</div>' +
+
+      '<div class="soon-head">' +
+        '<span class="soon-badge">' + esc(c.eyebrow) + '</span>' +
+        '<h1 class="page-title">' + esc(c.title) +
+          ' <em>' + esc(c.titleAccent) + '</em></h1>' +
+        '<p class="page-lede">' + esc(c.lede) + '</p>' +
+      '</div>' +
+
+      '<div class="pending-note"><strong>Not published yet.</strong> ' +
+        esc(c.note) + '</div>' +
+
+      '<div class="service-detail">' +
+        '<span class="rule-label">' + esc(c.topicsLabel) + '</span>' +
+        '<div class="subject-grid">' + topics + '</div>' +
+
+        (boards
+          ? '<span class="rule-label">' + esc(c.boardsLabel) + '</span>' +
+            '<div class="pill-row soon-boards">' + boards + '</div>'
+          : '') +
+
+        ctaRow(c.cta) +
+      '</div>';
+  }
+
   function notFound() {
     return '<div class="breadcrumb"><a href="#/">Courses</a></div>' +
       '<h1 class="page-title">Page not found</h1>' +
@@ -707,6 +752,8 @@
 
     if ((m = hash.match(/^\/c\/([\w-]+)\/m\/(\d+)/))) {
       app.innerHTML = viewModule(m[1], m[2], lang);
+    } else if (/^\/arduino\/?$/.test(hash)) {
+      app.innerHTML = viewEmbedded();
     } else if ((m = hash.match(/^\/quiz\/([\w-]+)/))) {
       app.innerHTML = (window.QuizUI && QuizUI.page(m[1], lang)) || notFound();
     } else if ((m = hash.match(/^\/c\/([\w-]+)/))) {
