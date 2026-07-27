@@ -91,7 +91,7 @@ Curriculum.addCourse({
   title: 'Programming Fundamentals',
   subtitle: 'Course 1',
   description:
-    'Variables, input and output, conditions, loops and arrays. Every objective is ' +
+    'Variables, input and output, conditions, arrays, and functions. Every objective is ' +
     'followed by three exercises that reuse the same concept in a different scenario.',
   rules: [
     'Read the input values in exactly the order the exercise states.',
@@ -107,7 +107,7 @@ Curriculum.addCourse({
   title: 'Object-Oriented Programming',
   subtitle: 'Course 2',
   description:
-    'Classes, objects, encapsulation, inheritance, polymorphism and abstraction, ' +
+    'Classes, objects, encapsulation, inheritance, interface, polymorphism and abstraction, ' +
     'built on top of Programming Fundamentals.',
   rules: [
     'Programming Fundamentals is a prerequisite for this course.',
