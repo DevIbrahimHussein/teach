@@ -159,6 +159,12 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   color: var(--on-navy); letter-spacing: .01em;
 }
 .footer-phone:hover { color: var(--gold); text-decoration: none; }
+/* Second contact line, deliberately quieter than the phone above it. */
+.footer-email {
+  display: inline-block; margin-top: 9px;
+  font-size: 14px; letter-spacing: .01em; color: var(--on-navy-dim);
+}
+.footer-email:hover { color: var(--gold); text-decoration: none; }
 .footer-who { display: flex; align-items: center; gap: 15px; }
 .footer-who-text { display: flex; flex-direction: column; text-align: right; }
 .footer-who strong {
