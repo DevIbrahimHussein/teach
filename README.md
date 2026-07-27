@@ -1,4 +1,4 @@
-# Ustaz Ibrahim Hussein — Technology & Programming
+# Mr Ibrahim Hussein — Technology & Programming
 
 An exercise-driven programming platform built from the specification in [`teach.md`](teach.md).
 
@@ -16,15 +16,14 @@ open index.html
 
 | Course | Modules | Status |
 | --- | --- | --- |
-| Programming Fundamentals | 1 Basics, 2 Conditions, 3 Loops, 4 Arrays | **66 exercises authored**, C++ and Java |
-| Programming Fundamentals | 5–10 | Syllabus pending |
+| Programming Fundamentals | 1 Basics, 2 Conditions, 3 Loops, 4 Arrays, 5 Functions | **84 exercises authored**, C++ and Java |
 | Object-Oriented Programming | 1–10 | Syllabus pending |
 | Evaluation test | Fundamentals 1–4 | **66 questions**, three per objective |
 
-Modules 5–10 of Course 1 and all of Course 2 render as *Syllabus pending* with their
-planned topics listed. `teach.md` asks for the detailed syllabus to be agreed with the
-instructor before exercise content is generated, so those modules carry topic outlines
-rather than invented objectives.
+Course 2 renders as *Syllabus pending* with its planned topics listed. `teach.md` asks
+for the detailed syllabus to be agreed with the instructor before exercise content is
+generated, so those modules carry topic outlines rather than invented objectives.
+Fundamentals 6–10 are not published at all until their syllabus is agreed.
 
 ## Brand
 
@@ -94,7 +93,7 @@ data/fundamentals/m1.js     Module 1 — Basics
 data/fundamentals/m2.js     Module 2 — Conditions
 data/fundamentals/m3.js     Module 3 — Loops
 data/fundamentals/m4.js     Module 4 — Arrays
-data/fundamentals/pending.js  Modules 5–10 placeholders
+data/fundamentals/m5.js     Module 5 — Functions
 data/oop.js                 Course 2 placeholders
 data/services.js            course pricing, tutoring offerings (BT3 IT), contact details
 data/quiz/quiz.js           question-bank registry
@@ -145,8 +144,8 @@ A module looks like this:
 
 ```js
 Curriculum.addModule('fundamentals', {
-  number: 5,
-  title: 'Functions',
+  number: 6,
+  title: 'Strings',
   summary: 'One line shown under the module title.',
   objectives: [ /* ... */ ]
 });
@@ -194,8 +193,9 @@ page. It exists so a student can find out where they stand before booking sessio
 so the first session starts from evidence rather than a guess.
 
 - **Coverage.** Three multiple-choice questions for every one of the 22 authored
-  objectives of Modules 1–4. Modules 5–10 and the OOP course have no questions, because
-  their syllabus is not agreed yet — the same rule the exercises follow.
+  objectives of Modules 1–4. Module 5 has exercises but no questions yet; Modules 6–10
+  and the OOP course have no questions because their syllabus is not agreed yet — the
+  same rule the exercises follow.
 - **During the test.** One question at a time, four choices, no timer. Answers can be
   changed until the test is finished, `A`–`D` and `1`–`4` pick, the arrow keys move, and
   progress is kept in `localStorage` so the browser can be closed and reopened. The
@@ -254,7 +254,7 @@ The data files are ordinary JavaScript, so they can be loaded and validated outs
 browser. The two checks used while authoring were: a structural pass (every objective has
 three exercises, every exercise has both language blocks, at least two samples, a
 difficulty, constraints and a hint) and an arithmetic pass that recomputes each sample's
-expected output from its input and compares. All 66 exercises and 204 sample cases pass
+expected output from its input and compares. All 84 exercises and 260 sample cases pass
 both.
 
 The evaluation test was checked the same way: a structural pass (every objective covered

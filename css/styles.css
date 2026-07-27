@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Ustaz Ibrahim Hussein — Technology & Programming
+   Mr Ibrahim Hussein — Technology & Programming
    Brand palette: deep navy, brass gold, warm cream. Serif display + sans body.
    Single stylesheet, no build step, no external fonts.
    ========================================================================== */
@@ -1257,6 +1257,63 @@ details.quiz-review[open] summary { margin-bottom: 12px; }
 .review-why {
   margin: 8px 0 0 30px; font-family: var(--serif); font-style: italic;
   font-size: 15px; color: var(--text-dim); max-width: 90ch;
+}
+
+/* ---------- preloader ---------- */
+/* Shown on the first view of a session only; index.html sets .is-loading on
+   <html> before paint and removes it on window load. */
+
+.preloader { display: none; }
+.is-loading .preloader,
+.preloader.is-gone { display: flex; }
+
+.preloader {
+  position: fixed; inset: 0; z-index: 200;
+  align-items: center; justify-content: center;
+  background: var(--navy);
+  transition: opacity .45s ease;
+}
+.preloader.is-gone { opacity: 0; pointer-events: none; }
+
+/* The overlay covers the page, so keep the page still underneath it. */
+.is-loading, .is-loading body { overflow: hidden; }
+
+.preloader-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+}
+.preloader-mark {
+  font-family: var(--mono); font-weight: 700; font-size: 22px; line-height: 1;
+  background: var(--gold); color: var(--navy);
+  padding: 12px 15px; border-radius: 10px;
+  animation: preload-breathe 1.6s ease-in-out infinite;
+}
+.preloader-name {
+  font-family: var(--serif); font-size: 17px; letter-spacing: .01em;
+  color: var(--on-navy);
+}
+.preloader-bar {
+  position: relative; overflow: hidden;
+  width: 132px; height: 3px; border-radius: 999px;
+  background: var(--navy-line);
+}
+.preloader-bar i {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 45%;
+  border-radius: inherit; background: var(--gold);
+  animation: preload-sweep 1.15s ease-in-out infinite;
+}
+
+@keyframes preload-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.07); }
+}
+@keyframes preload-sweep {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(222%); }
+}
+
+/* Without motion, hold the bar filled rather than looping it. */
+@media (prefers-reduced-motion: reduce) {
+  .preloader-bar i { width: 100%; transform: none; }
 }
 
 /* ---------- motion preferences ---------- */

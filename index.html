@@ -4,10 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Ustaz Ibrahim Hussein — Technology &amp; Programming</title>
+<title>Mr Ibrahim Hussein — Technology &amp; Programming</title>
 <link rel="stylesheet" href="css/styles.css">
+<script>
+  /* Preloader gate. Decided here, before first paint, so the second view of a
+     session never flashes the overlay. sessionStorage throws on file:// in some
+     browsers — there we just show it and forget. */
+  (function () {
+    var seen = null;
+    try {
+      seen = sessionStorage.getItem('teach.preloaded');
+      sessionStorage.setItem('teach.preloaded', '1');
+    } catch (e) { /* no memory available */ }
+    if (!seen) document.documentElement.className += ' is-loading';
+  })();
+</script>
 </head>
 <body>
+
+<div class="preloader" aria-hidden="true">
+  <div class="preloader-inner">
+    <span class="preloader-mark">&lt;/&gt;</span>
+    <span class="preloader-name">Mr. Ibrahim Hussein</span>
+    <span class="preloader-bar"><i></i></span>
+  </div>
+</div>
 
 <header class="site-header">
   <div class="wrap header-inner">
@@ -50,7 +71,7 @@
 
 <!-- Persistent WhatsApp contact button -->
 <a class="wa-fab" href="https://wa.me/96176614115" target="_blank" rel="noopener"
-   aria-label="Contact Ustaz Ibrahim Hussein on WhatsApp: +961 76614115"
+   aria-label="Contact Mr Ibrahim Hussein on WhatsApp: +961 76614115"
    title="WhatsApp +961 76614115">
   <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
@@ -63,7 +84,7 @@
 <script src="data/fundamentals/m2.js"></script>
 <script src="data/fundamentals/m3.js"></script>
 <script src="data/fundamentals/m4.js"></script>
-<script src="data/fundamentals/pending.js"></script>
+<script src="data/fundamentals/m5.js"></script>
 <script src="data/oop.js"></script>
 <script src="data/services.js"></script>
 <script src="data/home.js"></script>
@@ -71,6 +92,36 @@
 <script src="data/quiz/fundamentals.js"></script>
 <script src="js/quiz.js"></script>
 <script src="js/app.js"></script>
+
+<script>
+  /* Dismiss the preloader once the page has loaded, after a short floor so it
+     reads as a beat rather than a flicker. */
+  (function () {
+    var html = document.documentElement;
+    if (!/\bis-loading\b/.test(html.className)) return;
+
+    var el = document.querySelector('.preloader');
+    var MIN_MS = 550, FADE_MS = 450, MAX_WAIT_MS = 4000;
+    var start = Date.now(), dismissed = false;
+
+    function dismiss() {
+      if (dismissed) return;
+      dismissed = true;
+      setTimeout(function () {
+        html.className = html.className.replace(/\bis-loading\b/, '').replace(/\s+/g, ' ').trim();
+        if (!el) return;
+        el.className += ' is-gone';
+        setTimeout(function () {
+          if (el.parentNode) el.parentNode.removeChild(el);
+        }, FADE_MS);
+      }, Math.max(0, MIN_MS - (Date.now() - start)));
+    }
+
+    if (document.readyState === 'complete') dismiss();
+    else window.addEventListener('load', dismiss);
+    setTimeout(dismiss, MAX_WAIT_MS);  /* never trap the page behind a stalled asset */
+  })();
+</script>
 
 </body>
 </html>

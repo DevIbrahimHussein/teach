@@ -219,9 +219,59 @@ Analyze grades and salaries using arrays.
 - Exercise 2: Read salaries; display total, average, highest, and lowest salary.
 - Exercise 3: Read numbers; count positive, negative, even, and odd values.
 
-### Modules 5–10
+### Module 5 — Functions
 
-Keep the same structure: multiple objectives per module and three progressive exercises per objective. Define the detailed syllabus with the instructor before generating exercise content. Suggested next topics are array searching/sorting, functions, strings, matrices, files, and a final fundamentals review/project.
+#### Objective 1: Functions That Return a Value
+
+Cover the function header, parameters, `return`, and calling from `main`.
+
+- Exercise 1: Return the sum of two numbers.
+- Exercise 2: Return the larger of two numbers.
+- Exercise 3: Return a net salary from a gross salary and a deduction rate.
+
+#### Objective 2: `void` Functions
+
+Cover functions that act instead of answering: printing, and taking parameters without returning.
+
+- Exercise 1: Print a line of stars of a given length.
+- Exercise 2: Print a numbered grade line, called once per student.
+- Exercise 3: Print a receipt using a header function and a total function.
+
+#### Objective 3: Passing Arrays to Functions
+
+Cover the array parameter, the separate size parameter, and the fact that the array is not copied.
+
+- Exercise 1: Fill an array inside a function.
+- Exercise 2: Display an array inside a function.
+- Exercise 3: Build a salary report from a reading function and a display function.
+
+#### Objective 4: Returning a Result Calculated from an Array
+
+Cover functions that walk an array and return one value, with the return type following the answer.
+
+- Exercise 1: Return the average of an array of grades as a decimal.
+- Exercise 2: Return the highest salary in an array.
+- Exercise 3: Return a passing count and an average from two separate functions.
+
+#### Objective 5: Number Algorithms as Functions
+
+Move the Module 3 algorithms into reusable functions, including a boolean return.
+
+- Exercise 1: Return the factorial of a number.
+- Exercise 2: Return whether a number is prime.
+- Exercise 3: Return the Fibonacci term at a position, and print the first `n` terms.
+
+#### Objective 6: Recursion
+
+Cover the base case, the recursive case, and why a missing base case crashes.
+
+- Exercise 1: Calculate a factorial recursively.
+- Exercise 2: Calculate the sum of a number's digits recursively.
+- Exercise 3: Calculate a Fibonacci term recursively, with two base cases.
+
+### Modules 6–10
+
+Keep the same structure: multiple objectives per module and three progressive exercises per objective. Define the detailed syllabus with the instructor before generating exercise content. Suggested next topics are array searching/sorting, strings, matrices, files, and a final fundamentals review/project.
 
 ## Course 2: Object-Oriented Programming
 
