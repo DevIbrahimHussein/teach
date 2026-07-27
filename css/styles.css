@@ -351,6 +351,9 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
 @media (max-width: 620px) {
   .hero-actions .btn { width: 100%; }
   .hero-lede { max-width: none; }
+  /* on phones the portrait costs a full screen of scrolling before the copy
+     ends — the footer avatar carries the face instead */
+  .hero-portrait { display: none; }
 }
 
 /* ---------- service block (BT3 IT flyer) ---------- */
