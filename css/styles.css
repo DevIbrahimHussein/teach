@@ -180,11 +180,21 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   border: 2px solid var(--gold);
   background: var(--navy-soft);
 }
-.footer-note {
+/* Bottom bar. The disclaimer and the build credit share one rule and sit at
+   opposite ends, dropping to stacked lines once the footer is too narrow. */
+.footer-bottom {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 10px 24px; flex-wrap: wrap;
   margin: 26px 0 0; padding-top: 18px;
   border-top: 1px solid var(--navy-line);
+}
+.footer-note {
+  margin: 0;
   color: var(--on-navy-dim); max-width: 78ch;
 }
+.footer-credit { margin: 0; color: var(--on-navy-dim); }
+.footer-credit a { color: var(--gold-soft); font-weight: 700; }
+.footer-credit a:hover { color: var(--gold); text-decoration: none; }
 @media (max-width: 640px) {
   .footer-who { flex-direction: row-reverse; }
   .footer-who-text { text-align: left; }
