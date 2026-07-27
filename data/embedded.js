@@ -9,15 +9,15 @@
 
 window.EmbeddedCourse = {
   id: 'arduino',
-  eyebrow: 'In preparation',
+  eyebrow: 'Coming soon',
   title: 'Arduino',
   titleAccent: '& ESP32',
   lede: 'Electronics and embedded programming, taught the same way as the rest of ' +
         'this platform — you wire the circuit and write the code yourself.',
 
-  note: 'The syllabus is being written now. Sessions open once it is agreed, the ' +
-        'same rule the programming modules follow: nothing is published before the ' +
-        'exercises behind it exist.',
+  note: 'The syllabus is being written now, and sessions open once it is agreed — ' +
+        'the same rule the programming modules follow: nothing is published before ' +
+        'the exercises behind it exist. Message me to be told when it starts.',
 
   topicsLabel: 'What the course will cover',
   topics: [

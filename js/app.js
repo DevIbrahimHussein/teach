@@ -695,8 +695,12 @@
      title, lede — so it reads as part of the catalogue rather than an advert, but
      the module list is replaced by the topics it will cover. */
   function viewEmbedded() {
-    var c = window.EmbeddedCourse;
-    if (!c) return notFound();
+    /* Never fall through to notFound() here. If data/embedded.js is missing or
+       stale in a browser cache, an announced course that answers "page does not
+       exist" is the worst possible lie; the shell below still says coming soon. */
+    var c = window.EmbeddedCourse || {};
+    var title = c.title || 'Arduino';
+    var accent = c.titleAccent || '& ESP32';
 
     var topics = (c.topics || []).map(function (name, i) {
       return '<div class="subject">' +
@@ -710,28 +714,32 @@
     }).join('');
 
     return '<div class="breadcrumb"><a href="#/">Courses</a><span>/</span>' +
-        esc(c.title + ' ' + c.titleAccent) + '</div>' +
+        esc(title + ' ' + accent) + '</div>' +
 
       '<div class="soon-head">' +
-        '<span class="soon-badge">' + esc(c.eyebrow) + '</span>' +
-        '<h1 class="page-title">' + esc(c.title) +
-          ' <em>' + esc(c.titleAccent) + '</em></h1>' +
-        '<p class="page-lede">' + esc(c.lede) + '</p>' +
+        '<span class="soon-badge">' + esc(c.eyebrow || 'Coming soon') + '</span>' +
+        '<h1 class="page-title">' + esc(title) +
+          ' <em>' + esc(accent) + '</em></h1>' +
+        (c.lede ? '<p class="page-lede">' + esc(c.lede) + '</p>' : '') +
       '</div>' +
 
-      '<div class="pending-note"><strong>Not published yet.</strong> ' +
-        esc(c.note) + '</div>' +
+      '<div class="pending-note"><strong>Coming soon.</strong> ' +
+        esc(c.note || 'This course is being written. Sessions open once the ' +
+                      'syllabus is agreed.') + '</div>' +
 
       '<div class="service-detail">' +
-        '<span class="rule-label">' + esc(c.topicsLabel) + '</span>' +
-        '<div class="subject-grid">' + topics + '</div>' +
+        (topics
+          ? '<span class="rule-label">' + esc(c.topicsLabel || 'What it will cover') + '</span>' +
+            '<div class="subject-grid">' + topics + '</div>'
+          : '') +
 
         (boards
-          ? '<span class="rule-label">' + esc(c.boardsLabel) + '</span>' +
+          ? '<span class="rule-label">' + esc(c.boardsLabel || 'Boards') + '</span>' +
             '<div class="pill-row soon-boards">' + boards + '</div>'
           : '') +
 
-        ctaRow(c.cta) +
+        ctaRow(c.cta || { label: 'Ask about this course', message:
+          'Hello, I am interested in the Arduino & ESP32 course. When does it start?' }) +
       '</div>';
   }
 

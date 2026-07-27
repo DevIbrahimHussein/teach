@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>Mr Ibrahim Hussein — Technology &amp; Programming</title>
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css?v=20260727">
 <script>
   /* Preloader gate. Decided here, before first paint, so the second view of a
      session never flashes the overlay. sessionStorage throws on file:// in some
@@ -81,20 +81,24 @@
   <span class="wa-fab-label">WhatsApp</span>
 </a>
 
-<script src="data/courses.js"></script>
-<script src="data/fundamentals/m1.js"></script>
-<script src="data/fundamentals/m2.js"></script>
-<script src="data/fundamentals/m3.js"></script>
-<script src="data/fundamentals/m4.js"></script>
-<script src="data/fundamentals/m5.js"></script>
-<script src="data/oop.js"></script>
-<script src="data/embedded.js"></script>
-<script src="data/services.js"></script>
-<script src="data/home.js"></script>
-<script src="data/quiz/quiz.js"></script>
-<script src="data/quiz/fundamentals.js"></script>
-<script src="js/quiz.js"></script>
-<script src="js/app.js"></script>
+<!-- ?v= is a cache buster. There is no build step, so browsers happily keep serving
+     yesterday's app.js after an update — which shows up as pages that "do not exist"
+     because the route was added in the copy the browser is refusing to fetch. Bump
+     the date on every one of these when publishing a change. -->
+<script src="data/courses.js?v=20260727"></script>
+<script src="data/fundamentals/m1.js?v=20260727"></script>
+<script src="data/fundamentals/m2.js?v=20260727"></script>
+<script src="data/fundamentals/m3.js?v=20260727"></script>
+<script src="data/fundamentals/m4.js?v=20260727"></script>
+<script src="data/fundamentals/m5.js?v=20260727"></script>
+<script src="data/oop.js?v=20260727"></script>
+<script src="data/embedded.js?v=20260727"></script>
+<script src="data/services.js?v=20260727"></script>
+<script src="data/home.js?v=20260727"></script>
+<script src="data/quiz/quiz.js?v=20260727"></script>
+<script src="data/quiz/fundamentals.js?v=20260727"></script>
+<script src="js/quiz.js?v=20260727"></script>
+<script src="js/app.js?v=20260727"></script>
 
 <script>
   /* Dismiss the preloader once the page has loaded, after a short floor so it
