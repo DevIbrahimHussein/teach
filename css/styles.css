@@ -199,11 +199,11 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   .site-nav { gap: 2px; }
   .site-nav a { padding: 7px 10px; font-size: 12.5px; }
 }
-/* Below this the four items stop fitting even tightened, so the bar claws back its
-   gutter and, failing that, scrolls — a clipped link is unreachable, a scrolled one
-   is not. */
-@media (max-width: 380px) {
-  .site-header .wrap { padding: 0 12px; }
+/* Below this the five items stop fitting at the size above, so the bar claws back
+   its gutter and, failing that, scrolls — a clipped link is unreachable, a scrolled
+   one is not. */
+@media (max-width: 460px) {
+  .site-header .wrap { padding: 0 10px; }
   .site-nav {
     overflow-x: auto; scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
@@ -211,7 +211,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; }
   .site-nav::-webkit-scrollbar { display: none; }
   .site-nav { gap: 0; }
   .site-nav a {
-    padding: 7px 4px; font-size: 11.5px; letter-spacing: -.01em;
+    padding: 7px 3px; font-size: 11px; letter-spacing: -.01em;
     white-space: nowrap;
   }
 }

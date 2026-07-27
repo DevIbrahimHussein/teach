@@ -95,6 +95,7 @@ data/fundamentals/m3.js     Module 3 — Loops
 data/fundamentals/m4.js     Module 4 — Arrays
 data/fundamentals/m5.js     Module 5 — Functions
 data/oop.js                 Course 2 placeholders
+data/soon.js                announced courses — Arduino & ESP32, AI — one page each
 data/services.js            course pricing, tutoring offerings (BT3 IT), contact details
 data/quiz/quiz.js           question-bank registry
 data/quiz/fundamentals.js   66 questions, three per objective
