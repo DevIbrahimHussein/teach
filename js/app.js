@@ -691,9 +691,10 @@
     return '<nav class="pager">' + link(prev, '←') + link(next, '→') + '</nav>';
   }
 
-  /* The announced-but-unwritten course. Shaped like a course page — breadcrumb,
-     title, lede — so it reads as part of the catalogue rather than an advert, but
-     the module list is replaced by the topics it will cover. */
+  /* The announced-but-unwritten course. The whole page is the announcement: a badge,
+     the name, why it is not here yet and one way to ask about it. No syllabus is
+     shown — the topics are not agreed, and listing them would promise a shape the
+     course may not take. */
   function viewEmbedded() {
     /* Never fall through to notFound() here. If data/embedded.js is missing or
        stale in a browser cache, an announced course that answers "page does not
@@ -702,42 +703,17 @@
     var title = c.title || 'Arduino';
     var accent = c.titleAccent || '& ESP32';
 
-    var topics = (c.topics || []).map(function (name, i) {
-      return '<div class="subject">' +
-        '<span class="subject-num">' + pad2(i + 1) + '</span>' +
-        '<span class="subject-name">' + esc(name) + '</span>' +
-      '</div>';
-    }).join('');
-
-    var boards = (c.boards || []).map(function (b) {
-      return '<span class="pill pill-solid">' + esc(b) + '</span>';
-    }).join('');
-
     return '<div class="breadcrumb"><a href="#/">Courses</a><span>/</span>' +
         esc(title + ' ' + accent) + '</div>' +
 
-      '<div class="soon-head">' +
+      '<div class="soon-page">' +
         '<span class="soon-badge">' + esc(c.eyebrow || 'Coming soon') + '</span>' +
-        '<h1 class="page-title">' + esc(title) +
+        '<h1 class="soon-title">' + esc(title) +
           ' <em>' + esc(accent) + '</em></h1>' +
-        (c.lede ? '<p class="page-lede">' + esc(c.lede) + '</p>' : '') +
-      '</div>' +
-
-      '<div class="pending-note"><strong>Coming soon.</strong> ' +
-        esc(c.note || 'This course is being written. Sessions open once the ' +
-                      'syllabus is agreed.') + '</div>' +
-
-      '<div class="service-detail">' +
-        (topics
-          ? '<span class="rule-label">' + esc(c.topicsLabel || 'What it will cover') + '</span>' +
-            '<div class="subject-grid">' + topics + '</div>'
-          : '') +
-
-        (boards
-          ? '<span class="rule-label">' + esc(c.boardsLabel || 'Boards') + '</span>' +
-            '<div class="pill-row soon-boards">' + boards + '</div>'
-          : '') +
-
+        (c.lede ? '<p class="soon-lede">' + esc(c.lede) + '</p>' : '') +
+        '<p class="soon-note">' +
+          esc(c.note || 'This course is being written. Sessions open once the ' +
+                        'syllabus is agreed.') + '</p>' +
         ctaRow(c.cta || { label: 'Ask about this course', message:
           'Hello, I am interested in the Arduino & ESP32 course. When does it start?' }) +
       '</div>';
