@@ -87,14 +87,6 @@
       '<div class="body">' + fmt(body) + '</div></div>';
   }
 
-  function list(label, items, cls) {
-    if (!items || !items.length) return '';
-    return '<div class="field"><span class="eyebrow">' + esc(label) + '</span>' +
-      '<ul class="' + (cls || 'rules') + '">' +
-      items.map(function (i) { return '<li>' + fmt(i) + '</li>'; }).join('') +
-      '</ul></div>';
-  }
-
   function samplesTable(samples) {
     if (!samples || !samples.length) return '';
     var rows = samples.map(function (s, i) {
@@ -152,7 +144,6 @@
       field('Input', ex.input) +
       field('Output', ex.output) +
       samplesTable(ex.samples) +
-      list('Constraints', ex.constraints) +
 
       '<div class="lang-area">' + langAreaInner(ex, lang) + '</div>' +
 

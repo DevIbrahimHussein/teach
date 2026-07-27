@@ -9,7 +9,7 @@ The platform contains two courses:
 1. **Programming Fundamentals**
 2. **Object-Oriented Programming (OOP)**
 
-The courses are informative and exercise-driven. Students solve exercises independently. Do not provide solutions; provide only requirements, examples, validation.
+The courses are informative and exercise-driven. Students solve exercises independently. Do not provide solutions; provide only requirements and examples.
 
 ## Core Curriculum Model
 
@@ -20,7 +20,6 @@ The courses are informative and exercise-driven. Students solve exercises indepe
   - A short, clear problem description.
   - Required input and expected output behavior.
   - At least 2–3 sample input/output cases where relevant.
-  - Constraints or validation rules when applicable.
   - A difficulty level and optional hint.
 - Reuse a concept across the three exercises of one objective, but vary the scenario and data.
 

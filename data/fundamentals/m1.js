@@ -52,12 +52,6 @@ Curriculum.addModule('fundamentals', {
             { input: '-', output: 'ID: 1021\nName: Sara Ahmed\nAverage: 88.5\nSection: A' },
             { input: '-', output: 'ID: 3407\nName: Omar Khalid\nAverage: 71.0\nSection: C' }
           ],
-          constraints: [
-            'The ID is a whole number.',
-            'The average is a decimal number between 0 and 100.',
-            'The section is a single letter.',
-            'The name may contain a space, so it cannot be stored in a `char`.'
-          ],
           hint:
             'Read the shape of each value before choosing its type: whole number, decimal number, ' +
             'one letter, or several letters.',
@@ -98,11 +92,6 @@ Curriculum.addModule('fundamentals', {
             { input: '12.5\n3',    output: 'Price: 12.50\nQuantity: 3' },
             { input: '0.75\n120',  output: 'Price: 0.75\nQuantity: 120' },
             { input: '1499.9\n1',  output: 'Price: 1499.90\nQuantity: 1' }
-          ],
-          constraints: [
-            'The price is greater than 0.',
-            'The quantity is a whole number greater than or equal to 1.',
-            'The price may be typed with 0, 1 or 2 decimal digits, but it is always printed with 2.'
           ],
           hint:
             'The two values need different types. Storing the price in a whole-number variable would ' +
@@ -145,11 +134,6 @@ Curriculum.addModule('fundamentals', {
             { input: '4507 8250 B',     output: 'Employee ID: 4507\nSalary: 8250.00\nGrade: B' },
             { input: '1198 12750.5 A',  output: 'Employee ID: 1198\nSalary: 12750.50\nGrade: A' },
             { input: '6002 3400.25 C',  output: 'Employee ID: 6002\nSalary: 3400.25\nGrade: C' }
-          ],
-          constraints: [
-            'The ID is a positive whole number.',
-            'The salary is greater than 0.',
-            'The grade is one of `A`, `B`, `C` or `D`.'
           ],
           hint:
             'Three values, three different types. The grade is a single letter, so it does not need ' +
@@ -217,11 +201,6 @@ Curriculum.addModule('fundamentals', {
             { input: 'Omar\n22', output: 'Welcome Omar! You are 22 years old.' },
             { input: 'Layla 7',  output: 'Welcome Layla! You are 7 years old.' }
           ],
-          constraints: [
-            'The name contains letters only and has no spaces.',
-            'The age is a whole number between 1 and 120.',
-            'Note the exclamation mark after the name and the full stop at the end of the line.'
-          ],
           hint:
             'Build the sentence in one print statement. Watch the spaces around the name and the age — ' +
             'they are inside the text, not automatic.',
@@ -258,11 +237,6 @@ Curriculum.addModule('fundamentals', {
             { input: '4.5 12.25',   output: 'First: 4.50\nSecond: 12.25' },
             { input: '100\n0.5',    output: 'First: 100.00\nSecond: 0.50' },
             { input: '-3.75 8',     output: 'First: -3.75\nSecond: 8.00' }
-          ],
-          constraints: [
-            'The numbers may be negative.',
-            'The numbers are printed in the same order they were read.',
-            'A whole number in the input, such as `8`, is still printed as `8.00`.'
           ],
           hint:
             'The order matters. The first value you read is the one printed after `First:`.',
@@ -304,11 +278,6 @@ Curriculum.addModule('fundamentals', {
             { input: 'Ahmed 12 7300',      output: 'Employee: Ahmed\nDepartment: 12\nSalary: 7300.00' },
             { input: 'Nour\n5\n4850.75',   output: 'Employee: Nour\nDepartment: 5\nSalary: 4850.75' },
             { input: 'Yassin 30 15000.5',  output: 'Employee: Yassin\nDepartment: 30\nSalary: 15000.50' }
-          ],
-          constraints: [
-            'The name is a single word.',
-            'The department code is a whole number between 1 and 99.',
-            'The salary is greater than 0.'
           ],
           hint:
             'Three values of three different types, read in the stated order. Print each on its own line.',
@@ -378,12 +347,6 @@ Curriculum.addModule('fundamentals', {
             { input: '20 4',  output: 'Sum: 24\nDifference: 16\nProduct: 80\nQuotient: 5\nRemainder: 0' },
             { input: '5 9',   output: 'Sum: 14\nDifference: -4\nProduct: 45\nQuotient: 0\nRemainder: 5' }
           ],
-          constraints: [
-            'Both numbers are whole numbers.',
-            '`b` is never 0.',
-            'The difference is `a - b`, in that order, so it may be negative.',
-            'Keep both variables as whole-number types — this exercise is about integer division.'
-          ],
           hint:
             'Sample 3 is the interesting one: 5 divided by 9 gives a quotient of 0 with a remainder of 5. ' +
             'If your program prints `0.55...`, you used the wrong type.',
@@ -423,11 +386,6 @@ Curriculum.addModule('fundamentals', {
             { input: '10 0.75',   output: 'Total: 7.50' },
             { input: '1 1499.99', output: 'Total: 1499.99' }
           ],
-          constraints: [
-            'The quantity is a whole number between 1 and 1000.',
-            'The unit price is greater than 0.',
-            'The total is always printed with two decimal digits, even when it ends in `.00`.'
-          ],
           hint:
             'Multiplying a whole number by a decimal number gives a decimal result — the variable that ' +
             'stores the total must be able to hold a fraction.',
@@ -466,11 +424,6 @@ Curriculum.addModule('fundamentals', {
             { input: '3665',  output: 'Hours: 1\nMinutes: 1\nSeconds: 5' },
             { input: '59',    output: 'Hours: 0\nMinutes: 0\nSeconds: 59' },
             { input: '86399', output: 'Hours: 23\nMinutes: 59\nSeconds: 59' }
-          ],
-          constraints: [
-            'The input is a whole number between 0 and 359999.',
-            'One minute is 60 seconds; one hour is 3600 seconds.',
-            'All three printed values are whole numbers.'
           ],
           hint:
             'Whole-number division tells you how many complete units fit; the remainder tells you what ' +
@@ -532,11 +485,6 @@ Curriculum.addModule('fundamentals', {
             { input: '100 100 100',       output: 'Average: 100.00' },
             { input: '55.5 60 71.25',     output: 'Average: 62.25' }
           ],
-          constraints: [
-            'Each grade is between 0 and 100.',
-            'The average is the sum of the three grades divided by 3.',
-            'The result is not rounded to a whole number — keep two decimal digits.'
-          ],
           hint:
             'If your answer for `90 80 60` is `190.00`, the division was applied to the third grade only.',
           cpp: {
@@ -575,11 +523,6 @@ Curriculum.addModule('fundamentals', {
             { input: '5 3',    output: 'Area: 15.00\nPerimeter: 16.00' },
             { input: '2.5 4',  output: 'Area: 10.00\nPerimeter: 13.00' },
             { input: '10 10',  output: 'Area: 100.00\nPerimeter: 40.00' }
-          ],
-          constraints: [
-            'Both dimensions are greater than 0.',
-            'Area = length × width.',
-            'Perimeter = 2 × (length + width).'
           ],
           hint:
             'Writing the perimeter as `2 * length + width` multiplies only the length. Compare that with ' +
@@ -621,12 +564,6 @@ Curriculum.addModule('fundamentals', {
             { input: '200 15 30',   output: 'Final price: 200.00' },
             { input: '99.99 10 0',  output: 'Final price: 109.99' },
             { input: '500 5 75',    output: 'Final price: 450.00' }
-          ],
-          constraints: [
-            'The tax is calculated on the original price only, never on the discounted price.',
-            'The discount is a fixed amount of money, not a percentage.',
-            'Final price = original price + (original price × tax ÷ 100) − discount.',
-            'The discount never exceeds the taxed price, so the result is never negative.'
           ],
           hint:
             'Check sample 1 by hand: 15% of 200 is 30, so 200 + 30 − 30 = 200. If your program prints ' +

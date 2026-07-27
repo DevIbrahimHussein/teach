@@ -94,12 +94,6 @@
               { input: '-4 4',    output: 'Sum: 0' },
               { input: '100 250', output: 'Sum: 350' }
             ],
-            constraints: [
-              'Both values are whole numbers and may be negative.',
-              'The function returns the total — it must not print anything.',
-              'All printing happens in `main`.',
-              'The function is called exactly once.'
-            ],
             hint:
               'Two jobs, two places. The function knows how to add; only `main` knows how the answer ' +
               'should look on screen.',
@@ -135,11 +129,6 @@
               { input: '9 4',   output: 'Larger: 9' },
               { input: '3 12',  output: 'Larger: 12' },
               { input: '5 5',   output: 'Larger: 5' }
-            ],
-            constraints: [
-              'Both values are whole numbers and may be negative.',
-              'When the two values are equal, that value is the answer, as sample 3 shows.',
-              'The function returns the value — it must not print anything.'
             ],
             hint:
               'The condition you wrote in Module 2 does not change. It simply moves inside a function ' +
@@ -178,12 +167,6 @@
               { input: '5000 10',     output: 'Net: 4500.00' },
               { input: '3200.50 0',   output: 'Net: 3200.50' },
               { input: '4000 12.5',   output: 'Net: 3500.00' }
-            ],
-            constraints: [
-              'The gross salary is greater than 0.',
-              'The rate is between 0 and 100 and may have a fraction.',
-              'A rate of 0 leaves the salary unchanged, as sample 2 shows.',
-              'The function returns a decimal number; the formatting is done in `main`.'
             ],
             hint:
               'The rate arrives as 10, not as 0.10. Convert it inside the function, and the caller ' +
@@ -259,12 +242,6 @@
               { input: '1', output: '*' },
               { input: '3', output: '***' }
             ],
-            constraints: [
-              'The count is a whole number between 1 and 60.',
-              'The stars are printed with no spaces between them.',
-              'The line ends after the last star.',
-              'The function prints; it returns nothing.'
-            ],
             hint:
               'Print the stars one at a time inside the loop, and move to the next line once, after the ' +
               'loop has finished.',
@@ -302,12 +279,6 @@
               { input: '3\n88 72 95', output: 'Student 1: 88\nStudent 2: 72\nStudent 3: 95' },
               { input: '1\n60',       output: 'Student 1: 60' },
               { input: '2\n100 0',    output: 'Student 1: 100\nStudent 2: 0' }
-            ],
-            constraints: [
-              '`n` is a whole number between 1 and 100.',
-              'Each grade is a whole number between 0 and 100.',
-              'The student number is followed by a colon and a single space.',
-              'The function is called once per student, from inside the loop.'
             ],
             hint:
               'The loop lives in `main` and the printing lives in the function. Which of the two ' +
@@ -362,12 +333,6 @@
                 input: '3\n1 2 3',
                 output: '--- RECEIPT ---\nItem 1: 1.00\nItem 2: 2.00\nItem 3: 3.00\nTotal: 6.00'
               }
-            ],
-            constraints: [
-              '`n` is a whole number between 1 and 100.',
-              'Each price is greater than 0.',
-              'The header is printed once, before any item line.',
-              'The running total is kept in `main`; `printTotal` only displays the amount it is given.'
             ],
             hint:
               '`printTotal` does not add anything up. It receives a finished number and prints it — ' +
@@ -440,12 +405,6 @@
               { input: '1\n42',        output: 'Count: 1\nLast: 42' },
               { input: '3\n-5 0 7',    output: 'Count: 3\nLast: 7' }
             ],
-            constraints: [
-              '`n` is a whole number between 1 and 100.',
-              'The values may be negative or zero.',
-              'The reading loop is inside the function, not in `main`.',
-              'The two lines are printed in `main`, reading from the array the function filled.'
-            ],
             hint:
               'If both lines print correctly, you have proved the point of this objective: the function ' +
               'did not work on a copy.',
@@ -480,12 +439,6 @@
               { input: '4\n7 2 9 4', output: '7\n2\n9\n4' },
               { input: '1\n-8',      output: '-8' },
               { input: '3\n0 0 5',   output: '0\n0\n5' }
-            ],
-            constraints: [
-              '`n` is a whole number between 1 and 100.',
-              'Nothing is printed until every value has been read.',
-              'No labels and no position numbers — the values alone.',
-              'The printing loop is inside the function.'
             ],
             hint:
               'The function does not know or care where the values came from. That is exactly why it ' +
@@ -534,12 +487,6 @@
                 input: '2\n1000 1000',
                 output: 'Employee 1: 1000.00\nEmployee 2: 1000.00'
               }
-            ],
-            constraints: [
-              '`n` is a whole number between 1 and 100.',
-              'Each salary is greater than 0.',
-              'A whole-number salary in the input is still printed with two decimal digits.',
-              'Apart from reading `n`, `main` contains only the two calls — no loops.'
             ],
             hint:
               'You wrote this report in Module 4 as one long `main`. Splitting it in two changes nothing ' +
@@ -623,12 +570,6 @@
               { input: '3\n50 49 51',       output: 'Average: 50.00' },
               { input: '1\n7',              output: 'Average: 7.00' }
             ],
-            constraints: [
-              '`n` is a whole number between 1 and 100.',
-              'Each grade is a whole number between 0 and 100.',
-              'The grades are whole numbers but the average is not — the return type is `double`.',
-              'The average covers every grade in the array.'
-            ],
             hint:
               'If every average comes out with `.00` after it, the division happened between two whole ' +
               'numbers and the fraction was thrown away before the answer was returned.',
@@ -665,12 +606,6 @@
               { input: '5\n3000 4500 2800 6200 5100', output: 'Highest: 6200.00' },
               { input: '1\n7250.5',                   output: 'Highest: 7250.50' },
               { input: '3\n1200.25 1200.25 999.75',   output: 'Highest: 1200.25' }
-            ],
-            constraints: [
-              '`n` is a whole number between 1 and 100.',
-              'Each salary is greater than 0.',
-              'When `n` is 1, that single salary is the answer.',
-              'When the largest value appears more than once, it is still reported once.'
             ],
             hint:
               'Start from the first element of the array rather than from 0, and the function stays ' +
@@ -710,13 +645,6 @@
               { input: '5\n88 42 67 95 30', output: 'Passed: 3\nAverage: 64.40' },
               { input: '3\n50 49 51',       output: 'Passed: 2\nAverage: 50.00' },
               { input: '2\n0 100',          output: 'Passed: 1\nAverage: 50.00' }
-            ],
-            constraints: [
-              '`n` is a whole number between 1 and 100.',
-              'Each grade is a whole number between 0 and 100.',
-              'A grade of exactly 50 passes.',
-              'The average covers every grade, not only the passing ones.',
-              'Each function walks the array once and returns one value; neither prints anything.'
             ],
             hint:
               'Two questions, two functions, two return types. Trying to answer both in one function ' +
@@ -801,12 +729,6 @@
               { input: '0',  output: 'Factorial: 1' },
               { input: '10', output: 'Factorial: 3628800' }
             ],
-            constraints: [
-              'The number is a whole number between 0 and 20.',
-              'The factorial of 0 is 1, as sample 2 shows.',
-              'The answer for 20 does not fit in an `int`, so use a wider whole-number type.',
-              'The function returns the value; `main` prints it.'
-            ],
             hint:
               'A running product starts at 1, not at 0. Starting it at 0 makes every answer 0, and ' +
               'also happens to make the factorial of 0 come out wrong.',
@@ -845,12 +767,6 @@
               { input: '9', output: 'Not prime' },
               { input: '1', output: 'Not prime' }
             ],
-            constraints: [
-              'The number is a whole number between 1 and 100000.',
-              '1 is not prime, as sample 3 shows.',
-              '2 is prime — it is the only even number that is.',
-              'The function returns true or false; the message is chosen and printed in `main`.'
-            ],
             hint:
               'Deciding and reporting are two different jobs. Keep `Prime` and `Not prime` out of the ' +
               'function entirely, and it can be reused in a program that prints nothing at all.',
@@ -886,12 +802,6 @@
               { input: '5', output: '0\n1\n1\n2\n3' },
               { input: '1', output: '0' },
               { input: '8', output: '0\n1\n1\n2\n3\n5\n8\n13' }
-            ],
-            constraints: [
-              '`n` is a whole number between 1 and 40.',
-              'Position 1 holds 0 and position 2 holds 1.',
-              'The function returns one term — it does not print and does not loop over positions.',
-              'The loop over the positions is in `main`.'
             ],
             hint:
               'Inside the function, keep the two previous terms in two variables and move them along ' +
@@ -967,12 +877,6 @@
               { input: '0', output: 'Factorial: 1' },
               { input: '8', output: 'Factorial: 40320' }
             ],
-            constraints: [
-              'The number is a whole number between 0 and 20.',
-              'The function contains no loop of any kind.',
-              'The factorial of 0 is 1 — this is the base case.',
-              'Every other case is the number multiplied by the factorial of the number below it.'
-            ],
             hint:
               'Write the rule in words first: the factorial of `n` is `n` times the factorial of `n - 1`, ' +
               'and the factorial of 0 is 1. Those two sentences are the two branches of the function.',
@@ -1008,13 +912,6 @@
               { input: '1234', output: 'Sum: 10' },
               { input: '7',    output: 'Sum: 7' },
               { input: '9080', output: 'Sum: 17' }
-            ],
-            constraints: [
-              'The number is a whole number between 0 and 2000000000.',
-              'The digit sum of 0 is 0 — this is the base case.',
-              'The function contains no loop.',
-              'Zeros inside the number contribute nothing but must not stop the recursion early, as ' +
-                'sample 3 shows.'
             ],
             hint:
               '`% 10` gives the last digit and `/ 10` removes it. The sum of the digits of a number is ' +
@@ -1052,12 +949,6 @@
               { input: '7',  output: 'Fibonacci: 8' },
               { input: '1',  output: 'Fibonacci: 0' },
               { input: '10', output: 'Fibonacci: 34' }
-            ],
-            constraints: [
-              'The position is a whole number between 1 and 30.',
-              'Position 1 holds 0 and position 2 holds 1 — these are the two base cases.',
-              'The function contains no loop.',
-              'The upper limit of 30 is there for a reason: the number of calls grows very quickly.'
             ],
             hint:
               'This one needs two base cases, not one, because the recursive rule reaches two positions ' +

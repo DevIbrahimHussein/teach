@@ -48,11 +48,6 @@ Curriculum.addModule('fundamentals', {
             { input: '50', output: 'Pass' },
             { input: '41', output: '' }
           ],
-          constraints: [
-            'The grade is a whole number between 0 and 100.',
-            'A grade of exactly 50 counts as a pass.',
-            'This exercise uses a single `if`. Do not add an `else`.'
-          ],
           hint:
             'Sample 3 has an empty Output column on purpose — an `if` with a false condition is allowed ' +
             'to print nothing.',
@@ -87,11 +82,6 @@ Curriculum.addModule('fundamentals', {
             { input: '12', output: 'Positive' },
             { input: '0',  output: '' },
             { input: '-3', output: '' }
-          ],
-          constraints: [
-            'The number is a whole number between -1000 and 1000.',
-            'Zero is not positive.',
-            'This exercise uses a single `if`. Do not add an `else`.'
           ],
           hint:
             'Be careful which comparison you choose: `>= 0` would wrongly accept zero.',
@@ -130,11 +120,6 @@ Curriculum.addModule('fundamentals', {
             { input: '7250.5 5000', output: 'Above threshold' },
             { input: '5000 5000',   output: '' },
             { input: '4999.99 5000', output: '' }
-          ],
-          constraints: [
-            'Both values are greater than 0.',
-            'Equality does not count as being above the threshold.',
-            'This exercise uses a single `if`. Do not add an `else`.'
           ],
           hint:
             'Samples 2 and 3 exist to check the boundary. The comparison you need excludes the equal case.',
@@ -201,11 +186,6 @@ Curriculum.addModule('fundamentals', {
             { input: '7',  output: 'Odd' },
             { input: '-4', output: 'Even' }
           ],
-          constraints: [
-            'The number is a whole number between -1000 and 1000.',
-            'Zero is even.',
-            'Negative numbers follow the same rule: -4 is even, -7 is odd.'
-          ],
           hint:
             'For a negative number the remainder can itself be negative, so test for even rather than ' +
             'for odd and let `else` handle the rest.',
@@ -242,11 +222,6 @@ Curriculum.addModule('fundamentals', {
             { input: '50', output: 'Passed' },
             { input: '49', output: 'Failed' }
           ],
-          constraints: [
-            'The grade is a whole number between 0 and 100.',
-            'The passing mark is 50, and exactly 50 passes.',
-            'Exactly one line is printed for every input.'
-          ],
           hint:
             'Compare this with Objective 1, Exercise 1. Only the `else` branch is new.',
           cpp: {
@@ -281,11 +256,6 @@ Curriculum.addModule('fundamentals', {
             { input: '25', output: 'Eligible' },
             { input: '18', output: 'Eligible' },
             { input: '17', output: 'Not eligible' }
-          ],
-          constraints: [
-            'The age is a whole number between 1 and 120.',
-            'Exactly 18 is eligible.',
-            'The message `Not eligible` is two words with a lowercase `e`.'
           ],
           hint:
             'Get the boundary right first: sample 2 fails if you use `>` instead of `>=`.',
@@ -356,11 +326,6 @@ Curriculum.addModule('fundamentals', {
             { input: '104',  output: 'Out of range' },
             { input: '-2',   output: 'Out of range' }
           ],
-          constraints: [
-            'The average is a decimal number between -1000 and 1000.',
-            'Both 50 and 100 are inside the range.',
-            'The test must be a single condition using `&&`, not two separate `if` statements.'
-          ],
           hint:
             'Two comparisons are needed, one for each end of the range, joined by `&&`.',
           cpp: {
@@ -396,11 +361,6 @@ Curriculum.addModule('fundamentals', {
             { input: '18', output: 'Accepted' },
             { input: '25', output: 'Accepted' },
             { input: '26', output: 'Rejected' }
-          ],
-          constraints: [
-            'The age is a whole number between 1 and 120.',
-            'Both 18 and 25 are accepted.',
-            'You may write the accepting condition with `&&`, or the rejecting condition with `||` — both are correct.'
           ],
           hint:
             'The rejecting condition `age < 18 || age > 25` is the exact opposite of the accepting one. ' +
@@ -441,12 +401,6 @@ Curriculum.addModule('fundamentals', {
             { input: '60 75',   output: 'Qualified' },
             { input: '95 60',   output: 'Not qualified' },
             { input: '48 100',  output: 'Not qualified' }
-          ],
-          constraints: [
-            'The average is between 0 and 100.',
-            'The attendance percentage is a whole number between 0 and 100.',
-            'Both conditions must hold; meeting only one is not enough.',
-            'Both boundary values, 60 and 75, count as met.'
           ],
           hint:
             'Samples 3 and 4 each fail on a different requirement. A correct solution rejects both.',
@@ -514,11 +468,6 @@ Curriculum.addModule('fundamentals', {
             { input: '0',  output: 'Grade: 0' },
             { input: '-5', output: 'Invalid grade' }
           ],
-          constraints: [
-            'A grade of 0 is valid.',
-            'Only one line is ever printed.',
-            'When the grade is invalid, the program must not also print the `Grade:` line.'
-          ],
           hint:
             'If your program prints both lines for `-5`, the `return` after the error message is missing.',
           cpp: {
@@ -554,11 +503,6 @@ Curriculum.addModule('fundamentals', {
             { input: '120', output: 'Age: 120' },
             { input: '0',   output: 'Invalid age' },
             { input: '150', output: 'Invalid age' }
-          ],
-          constraints: [
-            'Both 1 and 120 are valid.',
-            'The rejection is triggered by a value below 1 or above 120.',
-            'Only one line is ever printed.'
           ],
           hint:
             'The invalid case has two separate causes, so the condition needs `||` — or write the valid ' +
@@ -596,11 +540,6 @@ Curriculum.addModule('fundamentals', {
             { input: '4500.5', output: 'Salary: 4500.50' },
             { input: '0',      output: 'Invalid salary' },
             { input: '-120',   output: 'Invalid salary' }
-          ],
-          constraints: [
-            'Zero is invalid, so the test is `<= 0`, not `< 0`.',
-            'Only one line is ever printed.',
-            'The formatting applies only to the valid case.'
           ],
           hint:
             'Sample 2 is the one that catches the wrong comparison operator.',
@@ -668,11 +607,6 @@ Curriculum.addModule('fundamentals', {
             { input: '500',    output: 'Final: 450.00' },
             { input: '499.99', output: 'Final: 499.99' }
           ],
-          constraints: [
-            'The purchase amount is greater than 0.',
-            'An amount of exactly 500 does qualify for the discount.',
-            'Below the threshold the customer pays the full amount.'
-          ],
           hint:
             'Sample 3 checks that no discount leaks into amounts just under the threshold.',
           cpp: {
@@ -713,12 +647,6 @@ Curriculum.addModule('fundamentals', {
             { input: '4000 C', output: 'New salary: 4200.00' },
             { input: '4000 Z', output: 'New salary: 4200.00' }
           ],
-          constraints: [
-            'The salary is greater than 0.',
-            'The category is a single uppercase letter.',
-            'Any letter other than `A` or `B` receives the 5 percent raise, as sample 4 shows.',
-            'Use `if` / `else if` / `else` for this exercise.'
-          ],
           hint:
             'Pick the percentage in the conditions, store it in a variable, and do the arithmetic once ' +
             'afterwards. That way the formula appears in your program only a single time.',
@@ -756,11 +684,6 @@ Curriculum.addModule('fundamentals', {
             { input: '300',  output: 'Final: 285.00' },
             { input: '500',  output: 'Final: 450.00' },
             { input: '1200', output: 'Final: 1020.00' }
-          ],
-          constraints: [
-            'The purchase amount is greater than 0.',
-            'The lower bound of each tier belongs to that tier: 200, 500 and 1000 each start a new tier.',
-            'Only one discount applies — the tiers do not stack.'
           ],
           hint:
             'An `if` / `else if` chain tested from the largest tier downward needs only one comparison ' +
@@ -833,11 +756,6 @@ Curriculum.addModule('fundamentals', {
             { input: '60', output: 'D' },
             { input: '41', output: 'F' }
           ],
-          constraints: [
-            'The grade is a whole number between 0 and 100.',
-            'Each boundary value belongs to the higher band: 90 is `A`, 80 is `B`, 70 is `C`, 60 is `D`.',
-            'Print the letter on its own, with no label.'
-          ],
           hint:
             'Test from the highest band downward. Once `>= 90` has failed, a branch reached later already ' +
             'knows the grade is below 90, so it needs only one comparison.',
@@ -879,12 +797,6 @@ Curriculum.addModule('fundamentals', {
             { input: '8000 6', output: 'Bonus: 10%' },
             { input: '8000 2', output: 'Bonus: 5%' }
           ],
-          constraints: [
-            'The salary is greater than 0.',
-            'The years of service is a whole number from 0 upward.',
-            'A salary of exactly 5000 belongs to the higher salary group.',
-            'Exactly 5 years counts as 5 or more.'
-          ],
           hint:
             'Two questions, four answers. Decide on the salary first, then ask about the years inside ' +
             'each branch. Note that 10 percent is reached along two different paths.',
@@ -918,11 +830,6 @@ Curriculum.addModule('fundamentals', {
             { input: '-4', output: 'Negative\nEven' },
             { input: '0',  output: 'Zero\nEven' },
             { input: '-9', output: 'Negative\nOdd' }
-          ],
-          constraints: [
-            'The number is a whole number between -1000 and 1000.',
-            'Zero is neither positive nor negative, and it is even.',
-            'Both lines are always printed, in the stated order.'
           ],
           hint:
             'The sign and the parity are two separate questions about the same value. Nesting the second ' +
@@ -988,11 +895,6 @@ Curriculum.addModule('fundamentals', {
             { input: '2', output: 'Monday' },
             { input: '3', output: 'Tuesday' }
           ],
-          constraints: [
-            'The input is guaranteed to be 1, 2 or 3 — no invalid values are tested here.',
-            'The day names start with a capital letter.',
-            'The solution must use `switch` / `case`.'
-          ],
           hint:
             'Three cases, one for each number, each ending with `break;`.',
           cpp: {
@@ -1022,11 +924,6 @@ Curriculum.addModule('fundamentals', {
             { input: '1',  output: 'January' },
             { input: '7',  output: 'July' },
             { input: '12', output: 'December' }
-          ],
-          constraints: [
-            'The input is guaranteed to be between 1 and 12.',
-            'Month names are spelled in full and start with a capital letter: January, February, March, April, May, June, July, August, September, October, November, December.',
-            'The solution must use `switch` / `case`.'
           ],
           hint:
             'Twelve cases is a lot of typing but no new ideas. Keep each one on a single line so the ' +
@@ -1060,11 +957,6 @@ Curriculum.addModule('fundamentals', {
             { input: '101', output: 'Programming Fundamentals' },
             { input: '102', output: 'Object-Oriented Programming' },
             { input: '103', output: 'Data Structures' }
-          ],
-          constraints: [
-            'The input is guaranteed to be 101, 102 or 103.',
-            'The titles are printed exactly as written, including the hyphen in `Object-Oriented`.',
-            'The solution must use `switch` / `case`.'
           ],
           hint:
             'Case labels do not have to be small numbers or start at 1 — any constant of the right type ' +
@@ -1140,12 +1032,6 @@ Curriculum.addModule('fundamentals', {
             { input: '6 * 7',  output: 'Result: 42.00' },
             { input: '4 - 10', output: 'Result: -6.00' }
           ],
-          constraints: [
-            'The operator is guaranteed to be one of the four listed characters.',
-            'The second number is never 0 when the operator is `/`.',
-            'The numbers are `double`, so the division keeps its fraction: 9 / 2 is 4.50, not 4.00.',
-            'The subtraction is first minus second, in that order.'
-          ],
           hint:
             'Try deleting one `break` and running sample 1 again. Seeing the wrong answer appear is the ' +
             'fastest way to remember what `break` does.',
@@ -1183,11 +1069,6 @@ Curriculum.addModule('fundamentals', {
             { input: 'B', output: 'Raise: 10%' },
             { input: 'C', output: 'Raise: 5%' }
           ],
-          constraints: [
-            'The category is guaranteed to be `A`, `B` or `C`.',
-            'The letters are uppercase.',
-            'The solution must use `switch` / `case` with a `break` in every case.'
-          ],
           hint:
             'If the input `A` makes your program print three lines, the `break` statements are missing.',
           cpp: {
@@ -1222,11 +1103,6 @@ Curriculum.addModule('fundamentals', {
             { input: '1', output: 'Fee: 50.00' },
             { input: '2', output: 'Fee: 120.00' },
             { input: '3', output: 'Fee: 300.00' }
-          ],
-          constraints: [
-            'The input is guaranteed to be 1, 2 or 3.',
-            'The fee is always shown with two decimal digits, even though the amounts are whole numbers.',
-            'The solution must use `switch` / `case` with a `break` in every case.'
           ],
           hint:
             'Assign the fee to a `double` variable inside each case and print it once after the switch. ' +
@@ -1295,11 +1171,6 @@ Curriculum.addModule('fundamentals', {
             { input: '9', output: 'Invalid choice' },
             { input: '0', output: 'Invalid choice' }
           ],
-          constraints: [
-            'The input may be any whole number, including negative ones.',
-            'Every input produces exactly one line of output.',
-            'The solution must use `switch` / `case` with a `default` branch.'
-          ],
           hint:
             'You cannot list every invalid number as a case. That is exactly the gap `default` fills.',
           cpp: {
@@ -1332,11 +1203,6 @@ Curriculum.addModule('fundamentals', {
             { input: '6', output: 'Friday' },
             { input: '7', output: 'Saturday' },
             { input: '8', output: 'Invalid day' }
-          ],
-          constraints: [
-            'The days in order from 1 to 7 are Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday.',
-            'The input may be any whole number, including 0 and negative values.',
-            'The solution must use `switch` / `case` with a `default` branch.'
           ],
           hint:
             'This is the earlier weekday exercise extended in two ways: four more cases, and a `default` ' +
@@ -1372,12 +1238,6 @@ Curriculum.addModule('fundamentals', {
             { input: 'C', output: 'Good' },
             { input: 'F', output: 'Fail' },
             { input: 'E', output: 'Invalid grade' }
-          ],
-          constraints: [
-            'The descriptions are exactly `Excellent`, `Very good`, `Good`, `Pass` and `Fail`. Only the first word is capitalised.',
-            'The letter `E` is not a valid grade, as sample 4 shows.',
-            'Lowercase letters are also invalid.',
-            'The solution must use `switch` / `case` with a `default` branch.'
           ],
           hint:
             'The grade letters are not consecutive — `E` is missing between `D` and `F`. Listing each ' +

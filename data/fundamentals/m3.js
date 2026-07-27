@@ -56,11 +56,6 @@ Curriculum.addModule('fundamentals', {
             { input: '150\n-2\n88',  output: 'Invalid, try again\nInvalid, try again\nGrade accepted: 88' },
             { input: '101\n100',     output: 'Invalid, try again\nGrade accepted: 100' }
           ],
-          constraints: [
-            'Both 0 and 100 are valid.',
-            'A valid value on the first attempt produces no `Invalid` line at all, as sample 1 shows.',
-            'The input always contains a valid value eventually.'
-          ],
           hint:
             'The message must appear only for rejected values, so it belongs inside an `if` inside the ' +
             'loop body, not directly in the body.',
@@ -98,11 +93,6 @@ Curriculum.addModule('fundamentals', {
             { input: '0\n-40\n1200.5', output: 'Invalid, try again\nInvalid, try again\nSalary accepted: 1200.50' },
             { input: '-1\n0.01',    output: 'Invalid, try again\nSalary accepted: 0.01' }
           ],
-          constraints: [
-            'Zero is rejected, so the invalid test is `<= 0`.',
-            'Any value above 0 is accepted, however small.',
-            'The input always contains a valid value eventually.'
-          ],
           hint:
             'This is the previous exercise with a simpler condition and a different type. The loop shape ' +
             'does not change.',
@@ -139,11 +129,6 @@ Curriculum.addModule('fundamentals', {
             { input: '3',        output: 'Choice accepted: 3' },
             { input: '0\n7\n1',  output: 'Invalid, try again\nInvalid, try again\nChoice accepted: 1' },
             { input: '5\n4',     output: 'Invalid, try again\nChoice accepted: 4' }
-          ],
-          constraints: [
-            'Both 1 and 4 are valid.',
-            'The input may contain negative numbers, which are rejected like any other invalid value.',
-            'The input always contains a valid value eventually.'
           ],
           hint:
             'The valid values form a range, so the invalid condition needs `||` — below the range or ' +
@@ -207,11 +192,6 @@ Curriculum.addModule('fundamentals', {
             { input: '1', output: '1' },
             { input: '3', output: '1\n2\n3' }
           ],
-          constraints: [
-            'The value of `n` is a whole number between 1 and 100.',
-            'The last line printed is `n` itself.',
-            'Nothing else is printed — no labels and no separators.'
-          ],
           hint:
             'Check the last number carefully. Using `<` instead of `<=` in the condition stops one line ' +
             'too early.',
@@ -246,11 +226,6 @@ Curriculum.addModule('fundamentals', {
             { input: '9',    output: 'Sum: 9' },
             { input: '1234', output: 'Sum: 10' }
           ],
-          constraints: [
-            'The number is a whole number between 1 and 1000000.',
-            'A single-digit number has that digit as its sum.',
-            'Zero digits contribute nothing, as 407 shows.'
-          ],
           hint:
             '`% 10` gives you the last digit and `/ 10` removes it. Repeat until nothing is left.',
           cpp: {
@@ -284,11 +259,6 @@ Curriculum.addModule('fundamentals', {
             { input: '12345', output: 'Even digits: 2\nOdd digits: 3' },
             { input: '2468',  output: 'Even digits: 4\nOdd digits: 0' },
             { input: '7',     output: 'Even digits: 0\nOdd digits: 1' }
-          ],
-          constraints: [
-            'The number is a whole number between 1 and 1000000.',
-            'The digit 0 is even.',
-            'Both lines are always printed, even when one of the counts is 0.'
           ],
           hint:
             'This is the digit-peeling loop again, with an `if` inside it instead of an addition. Two ' +
@@ -361,11 +331,6 @@ Curriculum.addModule('fundamentals', {
             { input: '4\n100 50 75 25',  output: 'Sum: 250\nAverage: 62.50' },
             { input: '1\n88',            output: 'Sum: 88\nAverage: 88.00' }
           ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'Each grade is a whole number between 0 and 100.',
-            'The average is not rounded to a whole number — it keeps two decimal digits.'
-          ],
           hint:
             'The total is a whole number but the average is not. Dividing two whole numbers would throw ' +
             'the fraction away — sample 1 would print `76.00`.',
@@ -401,12 +366,6 @@ Curriculum.addModule('fundamentals', {
             { input: '5\n4 7 10 3 8',  output: 'Even: 3\nOdd: 2' },
             { input: '3\n1 3 5',       output: 'Even: 0\nOdd: 3' },
             { input: '4\n0 2 -4 -6',   output: 'Even: 4\nOdd: 0' }
-          ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'The numbers may be negative or zero.',
-            'Zero is even.',
-            'Both lines are always printed, even when one count is 0.'
           ],
           hint:
             'Sample 3 contains negative numbers on purpose. Test for even with `% 2 == 0` and let `else` ' +
@@ -444,12 +403,6 @@ Curriculum.addModule('fundamentals', {
             { input: '5\n90 45 78 30 64', output: 'Passed: 3\nFailed: 2\nAverage: 61.40' },
             { input: '3\n50 49 100',      output: 'Passed: 2\nFailed: 1\nAverage: 66.33' },
             { input: '2\n10 20',          output: 'Passed: 0\nFailed: 2\nAverage: 15.00' }
-          ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'Each grade is a whole number between 0 and 100.',
-            'A grade of exactly 50 passes.',
-            'The average is over all grades, not only the passing ones.'
           ],
           hint:
             'Three things are accumulated in the same loop: a pass counter, a fail counter and a running ' +
@@ -519,11 +472,6 @@ Curriculum.addModule('fundamentals', {
             { input: '0',  output: 'Factorial: 1' },
             { input: '12', output: 'Factorial: 479001600' }
           ],
-          constraints: [
-            '`n` is a whole number between 0 and 12.',
-            'The upper limit of 12 keeps the answer inside the range of a normal integer.',
-            'When `n` is 0 the loop body never runs, and the starting value is the answer.'
-          ],
           hint:
             'Sample 2 is the one to think about. If the accumulator starts at the right value, the ' +
             'zero case needs no special handling at all.',
@@ -560,11 +508,6 @@ Curriculum.addModule('fundamentals', {
             { input: '1',  output: 'Not prime' },
             { input: '9',  output: 'Not prime' },
             { input: '2',  output: 'Prime' }
-          ],
-          constraints: [
-            'The number is a whole number between 1 and 100000.',
-            '1 is not prime, as sample 2 shows.',
-            '2 is prime, and it is the only even prime.'
           ],
           hint:
             'Use a flag that starts as "still prime" and is switched off the moment a divisor is found. ' +
@@ -603,11 +546,6 @@ Curriculum.addModule('fundamentals', {
             { input: '28',  output: 'Perfect' },
             { input: '12',  output: 'Not perfect' },
             { input: '1',   output: 'Not perfect' }
-          ],
-          constraints: [
-            'The number is a whole number between 1 and 100000.',
-            'The number itself is not counted among its proper divisors.',
-            '1 has no proper divisors below itself other than none at all, so its divisor sum is 0 and it is not perfect.'
           ],
           hint:
             'This is the divisor loop again, but it accumulates instead of setting a flag. Compare the ' +
@@ -694,12 +632,6 @@ Curriculum.addModule('fundamentals', {
               output: 'Student 1 average: 50.00\nStudent 2 average: 50.00\nStudent 3 average: 77.50'
             }
           ],
-          constraints: [
-            '`s` and `g` are whole numbers between 1 and 20.',
-            'Each grade is a whole number between 0 and 100.',
-            'Every student has exactly `g` grades.',
-            'A student\'s average is reported before the next student\'s grades are processed.'
-          ],
           hint:
             'The running total belongs inside the outer loop, so that it starts again from 0 for each ' +
             'student. Declaring it before the outer loop would keep adding one student\'s grades to the next.',
@@ -747,11 +679,6 @@ Curriculum.addModule('fundamentals', {
               input: '2 3\n1000 2000 3000\n7250.5 7250.5 7250.5',
               output: 'Department 1 average: 2000.00\nDepartment 2 average: 7250.50'
             }
-          ],
-          constraints: [
-            '`d` and `e` are whole numbers between 1 and 20.',
-            'Each salary is greater than 0.',
-            'Every department has exactly `e` employees.'
           ],
           hint:
             'This is the previous exercise with decimal values. The one thing that changes is the type ' +
@@ -801,12 +728,6 @@ Curriculum.addModule('fundamentals', {
               input: '3 2\n60 70\n10 20\n50 50',
               output: 'Section 1: Passed 2, Failed 0\nSection 2: Passed 0, Failed 2\nSection 3: Passed 2, Failed 0'
             }
-          ],
-          constraints: [
-            '`k` and `m` are whole numbers between 1 and 20.',
-            'Each grade is a whole number between 0 and 100.',
-            'A grade of exactly 50 passes.',
-            'The two counts on each line always add up to `m`.'
           ],
           hint:
             'Two counters must be reset for every section, not just one. Forgetting to reset the second ' +

@@ -43,11 +43,6 @@ Curriculum.addModule('fundamentals', {
           samples: [
             { input: '-', output: '4\n8\n15\n16\n23\n42' }
           ],
-          constraints: [
-            'The array holds exactly these six values in exactly this order.',
-            'Nothing else is printed — no labels and no positions.',
-            'Use a loop rather than six separate print statements.'
-          ],
           hint:
             'The loop counter and the array position are the same number. Start it at 0 and stop before ' +
             'the size, not at it.',
@@ -80,11 +75,6 @@ Curriculum.addModule('fundamentals', {
           samples: [
             { input: '-', output: 'First: 88\nLast: 79' }
           ],
-          constraints: [
-            'The array holds exactly these five grades in exactly this order.',
-            'The first value is at position 0.',
-            'The last value is at position size − 1, which is 4 here, not 5.'
-          ],
           hint:
             'Writing the last position as `size - 1` rather than as the number 4 means the program still ' +
             'works if you later add a grade.',
@@ -116,11 +106,6 @@ Curriculum.addModule('fundamentals', {
             'Printed with exactly two digits after the decimal point.',
           samples: [
             { input: '-', output: 'Total: 15351.50' }
-          ],
-          constraints: [
-            'The array holds exactly these four salaries.',
-            'The array element type must be able to hold a fraction.',
-            'Use a loop to add the values, not four separate additions.'
           ],
           hint:
             'This is the running-total pattern from the loops module, with the values coming from an ' +
@@ -190,11 +175,6 @@ Curriculum.addModule('fundamentals', {
             { input: '1\n42',        output: 'Count: 1\nLast: 42' },
             { input: '3\n-5 0 7',    output: 'Count: 3\nLast: 7' }
           ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'The values may be negative or zero.',
-            'The last value is the one at position `n - 1`.'
-          ],
           hint:
             'If your program prints a strange number for `Last`, you probably read position `n` instead ' +
             'of position `n - 1`.',
@@ -229,11 +209,6 @@ Curriculum.addModule('fundamentals', {
             { input: '5\n88 72 95 60 79', output: 'First: 88\nLast: 79' },
             { input: '2\n100 0',          output: 'First: 100\nLast: 0' },
             { input: '1\n55',             output: 'First: 55\nLast: 55' }
-          ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'Each grade is a whole number between 0 and 100.',
-            'When `n` is 1 the first and last grade are the same value, as sample 3 shows.'
           ],
           hint:
             'Sample 3 is worth checking. A solution that assumes there are at least two grades will get ' +
@@ -271,12 +246,6 @@ Curriculum.addModule('fundamentals', {
             { input: '3\n5000 4200.5 3100',  output: 'All salaries accepted' },
             { input: '3\n5000 -20 3100',     output: 'Invalid salary' },
             { input: '2\n0 1000',            output: 'Invalid salary' }
-          ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'A salary of exactly 0 is invalid.',
-            'The program stops at the first invalid value; the remaining values are not read.',
-            'Only one line is ever printed.'
           ],
           hint:
             'This combines two things you already know: the filling loop from this objective and the ' +
@@ -339,11 +308,6 @@ Curriculum.addModule('fundamentals', {
             { input: '1\n-8',      output: '-8' },
             { input: '3\n0 0 5',   output: '0\n0\n5' }
           ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'Nothing is printed until all the values have been read.',
-            'No labels and no position numbers — the values alone.'
-          ],
           hint:
             'Two loops in sequence: one to fill, one to print. Printing inside the filling loop would ' +
             'also produce the right output here, but it would not for the next exercises.',
@@ -378,11 +342,6 @@ Curriculum.addModule('fundamentals', {
             { input: '3\n88 72 95', output: '1: 88\n2: 72\n3: 95' },
             { input: '1\n60',       output: '1: 60' },
             { input: '2\n100 0',    output: '1: 100\n2: 0' }
-          ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'Each grade is a whole number between 0 and 100.',
-            'The position number is followed by a colon and a single space.'
           ],
           hint:
             'The number you print and the position you read from differ by one. Do not change the loop ' +
@@ -428,11 +387,6 @@ Curriculum.addModule('fundamentals', {
               input: '2\n1000 1000',
               output: 'Employee 1: 1000.00\nEmployee 2: 1000.00'
             }
-          ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'Each salary is greater than 0.',
-            'A whole-number salary in the input is still printed with two decimal digits.'
           ],
           hint:
             'The decimal formatting can be set once, before the loop, rather than repeated on every line.',
@@ -504,12 +458,6 @@ Curriculum.addModule('fundamentals', {
             { input: '3\n50 49 51',       output: 'Passed: 2\nFailed: 1\nAverage: 50.00' },
             { input: '2\n0 100',          output: 'Passed: 1\nFailed: 1\nAverage: 50.00' }
           ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'Each grade is a whole number between 0 and 100.',
-            'A grade of exactly 50 passes.',
-            'The average covers every grade, not only the passing ones.'
-          ],
           hint:
             'You solved this in Module 3 without an array. Try it again here and notice that the array ' +
             'lets you separate reading the data from analysing it.',
@@ -558,12 +506,6 @@ Curriculum.addModule('fundamentals', {
               output: 'Total: 3400.25\nAverage: 1133.42\nHighest: 1200.25\nLowest: 999.75'
             }
           ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'Each salary is greater than 0.',
-            'When `n` is 1, all four answers are that single salary.',
-            'When the highest value appears more than once, it is still reported once.'
-          ],
           hint:
             'Start the highest and the lowest at the first element of the array, then compare from the ' +
             'second element onward. Starting them at 0 would make the lowest wrong for every input here.',
@@ -601,12 +543,6 @@ Curriculum.addModule('fundamentals', {
             { input: '6\n4 -7 0 9 -2 6',  output: 'Positive: 3\nNegative: 2\nEven: 4\nOdd: 2' },
             { input: '3\n1 3 5',          output: 'Positive: 3\nNegative: 0\nEven: 0\nOdd: 3' },
             { input: '2\n0 0',            output: 'Positive: 0\nNegative: 0\nEven: 2\nOdd: 0' }
-          ],
-          constraints: [
-            '`n` is a whole number between 1 and 100.',
-            'The values may be negative or zero.',
-            'Zero is neither positive nor negative, but it is even.',
-            'The sign counts and the parity counts are independent, so the positive and negative counts need not add up to `n`.'
           ],
           hint:
             'Sign and parity are two separate questions about each value. Sample 3 shows why zero must ' +

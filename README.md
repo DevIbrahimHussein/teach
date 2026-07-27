@@ -174,7 +174,6 @@ An exercise:
   input:  'What is read, and in what order.',
   output: 'Exact lines to print.',
   samples: [{ input: '5\n1 2 3', output: 'Found' }],   // use '-' for no input
-  constraints: ['Rule.', 'Rule.'],
   hint: 'Optional nudge, hidden behind a toggle.',
   cpp:  { includes: ['<iomanip>'], notes: ['…'] },
   java: { scanner: true,           notes: ['…'] }
@@ -184,7 +183,7 @@ An exercise:
 The starter template is generated from `includes` / `scanner`, so you do not write it
 by hand. Pass `starter: '…'` on either language block to override it.
 
-Backticks inside `description`, `points`, `notes`, `constraints` and `hint` render as
+Backticks inside `description`, `points`, `notes` and `hint` render as
 inline `code`.
 
 ## The evaluation test
@@ -244,7 +243,7 @@ render as inline `code`, as everywhere else in the content.
 
 - The problem, the samples and the expected behaviour are identical across C++ and Java.
   Only the syntax notes and the starter template change when the selector is switched.
-- Exercises never contain solutions — requirements, samples, constraints and a hint only.
+- Exercises never contain solutions — requirements, samples and a hint only.
 - No exercise uses a concept introduced later in the curriculum.
 - Sample output is complete: students print those lines and nothing else, with no prompts.
 - Every objective reuses one concept across its three exercises, varying the scenario.
@@ -254,7 +253,7 @@ render as inline `code`, as everywhere else in the content.
 The data files are ordinary JavaScript, so they can be loaded and validated outside the
 browser. The two checks used while authoring were: a structural pass (every objective has
 three exercises, every exercise has both language blocks, at least two samples, a
-difficulty, constraints and a hint) and an arithmetic pass that recomputes each sample's
+difficulty and a hint) and an arithmetic pass that recomputes each sample's
 expected output from its input and compares. All 84 exercises and 260 sample cases pass
 both.
 
