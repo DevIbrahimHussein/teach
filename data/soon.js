@@ -35,7 +35,7 @@ window.SoonCourses = [
     id: 'ai',
     eyebrow: 'Coming soon',
     title: 'AI',
-    titleAccent: '& Machine Learning',
+    titleAccent: '& Claude',
 
     lede: 'How machines learn, from the mathematics up — taught the same way as the ' +
           'rest of this platform, with problems you solve yourself.',
